@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0d1a35;
+  --border: #e5e9f2;
+  --ring: #c9a84c;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* offset for sticky header on anchor jumps */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8;
+  }
+  .section-title {
+    @apply font-heading text-3xl font-bold tracking-tight text-navy-dark sm:text-4xl;
+  }
+  .gold-divider {
+    @apply mx-auto mt-4 h-1 w-20 rounded-full bg-gold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* subtle shield/grid pattern overlay for dark hero areas */
+  .bg-shield-grid {
+    background-image:
+      linear-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}
+
+/* hide scrollbar on horizontal sliders if any */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
