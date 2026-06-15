@@ -1,4 +1,3 @@
-// Language toggle removed - Ukrainian only
-export function LanguageToggle(props: { className?: string }) {
+export function LanguageToggle() {
   return null;
 }
