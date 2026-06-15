@@ -6,7 +6,6 @@ import { MapPin, Phone } from "lucide-react";
 import { COMPANY, PHONES, SOCIALS, NAV_LINKS } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
 import { Logo } from "./logo";
-import { LanguageToggle } from "@/components/language-toggle";
 import { SocialIcon } from "@/components/social-icon";
 
 export function Footer() {
@@ -108,10 +107,6 @@ export function Footer() {
           <p>
             © {year} {COMPANY.name}. {t("rights")}
           </p>
-          <div className="flex items-center gap-3">
-            <span className="text-xs uppercase tracking-wider">{t("language")}:</span>
-            <LanguageToggle className="text-light" />
-          </div>
         </div>
       </div>
     </footer>

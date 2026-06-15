@@ -1,13 +1,11 @@
-/** The 14 services shown on the homepage grid and as dedicated pages. */
+/** Services — SMS ГУАРД removed */
 
 export type Service = {
   key: string;
   title: string;
   href: string;
-  /** lucide-react icon name, mapped to a component in ServiceCard. */
   icon: string;
   description: string;
-  /** Path under /public; real photo where available, branded SVG otherwise. */
   image: string;
 };
 
@@ -18,7 +16,7 @@ export const SERVICES: Service[] = [
     href: "/pultova-oxorona",
     icon: "MonitorCheck",
     description:
-      "Цілодобовий моніторинг сигналів вашого об'єкта на пульті з миттєвим реагуванням мобільних груп.",
+      "Цілодобовий моніторинг вашого об'єкта на центральному пульті. При спрацюванні сигналізації — миттєве виїздне реагування мобільної групи. Під охороною 24 години на добу, 7 днів на тиждень.",
     image: "/images/services/pult.svg",
   },
   {
@@ -27,16 +25,16 @@ export const SERVICES: Service[] = [
     href: "/bezdrotova-signalizaciya",
     icon: "Wifi",
     description:
-      "Сучасні бездротові системи безпеки AJAX — швидкий монтаж без штроблення стін та керування зі смартфона.",
+      "Сучасні бездротові охоронні системи AJAX — монтаж без штроблення стін, керування зі смартфона. Надійний захист квартири, будинку або офісу з миттєвим сповіщенням.",
     image: "/images/services/ajax.jpg",
   },
   {
     key: "provodna",
-    title: "Дротова сигналізація",
+    title: "Провідна сигналізація",
     href: "/providna-signalizaciya",
     icon: "Cable",
     description:
-      "Надійні провідні охоронні системи для об'єктів будь-якої складності та площі.",
+      "Класичні провідні охоронні системи для об'єктів будь-якої складності. Висока надійність, стійкість до перешкод, підключення до пульту централізованого спостереження.",
     image: "/images/services/provodna.svg",
   },
   {
@@ -45,7 +43,7 @@ export const SERVICES: Service[] = [
     href: "/fizychna-oxorona",
     icon: "UserCheck",
     description:
-      "Професійні охоронці на вашому об'єкті — контроль доступу, порядок та оперативне реагування.",
+      "Професійні озброєні охоронці на вашому об'єкті. Контроль доступу, охорона периметра, супровід цінностей та VIP-осіб. Індивідуальний підхід до кожного клієнта.",
     image: "/images/services/fizychna.svg",
   },
   {
@@ -54,7 +52,7 @@ export const SERVICES: Service[] = [
     href: "/perimetralna-signalizaciya",
     icon: "Fence",
     description:
-      "Захист периметра території з раннім виявленням проникнення ще до підходу до будівлі.",
+      "Захист зовнішнього периметра з виявленням вторгнення ще до підходу до будівлі. Інфрачервоні, вібраційні та мікрохвильові датчики для будь-яких умов.",
     image: "/images/services/perimetr.svg",
   },
   {
@@ -63,16 +61,16 @@ export const SERVICES: Service[] = [
     href: "/sistemi-kontrolyu-dostupu",
     icon: "ScanLine",
     description:
-      "СКУД для офісів та підприємств: картки, біометрія, облік робочого часу та керування доступом.",
+      "СКУД для офісів, підприємств та житлових комплексів: картки, браслети, біометрія. Точний облік робочого часу та диференційоване управління правами доступу.",
     image: "/images/services/skud.svg",
   },
   {
     key: "vdoma",
-    title: "Я дома під охороною",
+    title: "Я вдома під охороною",
     href: "/ya-vdoma",
     icon: "Home",
     description:
-      "Особлива послуга для тих, хто вдома: тривожна кнопка та виклик мобільної групи у разі небезпеки.",
+      "Спеціальна послуга для захисту вдома: тривожна кнопка, датчики руху та негайний виклик мобільної групи. Безпека для вас і вашої родини цілодобово.",
     image: "/images/services/vdoma.svg",
   },
   {
@@ -81,7 +79,7 @@ export const SERVICES: Service[] = [
     href: "/mobilna-klaviatura",
     icon: "Smartphone",
     description:
-      "Керуйте охоронною системою зі смартфона — постановка та зняття з охорони у кілька дотиків.",
+      "Зручне управління охоронною системою через мобільний додаток. Постановка та зняття з охорони, перегляд подій та стану датчиків у реальному часі.",
     image: "/images/services/klaviatura.svg",
   },
   {
@@ -90,7 +88,7 @@ export const SERVICES: Service[] = [
     href: "/videoposterezhennaya",
     icon: "Cctv",
     description:
-      "Монтаж та обслуговування систем відеоспостереження з віддаленим доступом і архівом запису.",
+      "Монтаж та обслуговування IP та аналогових систем відеоспостереження. Віддалений перегляд онлайн, архів запису, розпізнавання осіб та автомобільних номерів.",
     image: "/images/services/video.svg",
   },
   {
@@ -99,26 +97,17 @@ export const SERVICES: Service[] = [
     href: "/pozhezhna-signalizaciya",
     icon: "Flame",
     description:
-      "Раннє виявлення займання та автоматичне сповіщення — захист людей і майна від пожежі.",
+      "Адресні та порогові системи пожежної сигналізації. Раннє виявлення диму та підвищення температури, автоматичне сповіщення служб та евакуація персоналу.",
     image: "/images/services/pozhezhna.svg",
   },
   {
     key: "grupy",
-    title: "Мобільні групи",
+    title: "Мобільні групи реагування",
     href: "/mobilni-grupy",
     icon: "Car",
     description:
-      "70 екіпажів реагування по всьому Дніпру, готових прибути на об'єкт у будь-який час доби.",
+      "70 озброєних екіпажів по всьому Дніпру. Час прибуття — від 3 до 7 хвилин. Цілодобове патрулювання та миттєве реагування на тривогу будь-якого об'єкта.",
     image: "/images/services/grupy.svg",
-  },
-  {
-    key: "sms",
-    title: "SMS ГУАРД",
-    href: "/sms-guard",
-    icon: "MessageSquare",
-    description:
-      "Інформування про всі події на об'єкті через SMS — ви завжди в курсі стану вашої охорони.",
-    image: "/images/services/sms.svg",
   },
   {
     key: "satelit",
@@ -126,7 +115,7 @@ export const SERVICES: Service[] = [
     href: "/suputnikove-sposterezhennya",
     icon: "Satellite",
     description:
-      "GPS-моніторинг транспорту та мобільних об'єктів з контролем маршруту в реальному часі.",
+      "GPS/ГЛОНАСС моніторинг транспортних засобів та рухомих об'єктів. Контроль маршруту, швидкості та зупинок в режимі реального часу через веб-кабінет.",
     image: "/images/services/satelit.svg",
   },
   {
@@ -135,7 +124,7 @@ export const SERVICES: Service[] = [
     href: "/montazh",
     icon: "Wrench",
     description:
-      "Професійний монтаж і налаштування всіх систем безпеки під ключ кваліфікованими фахівцями.",
+      "Проєктування, монтаж та налаштування всіх систем безпеки під ключ. Власна бригада сертифікованих монтажників. Гарантія на виконані роботи та обладнання.",
     image: "/images/services/montazh.jpg",
   },
 ];

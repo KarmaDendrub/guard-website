@@ -2,7 +2,7 @@
 
 export const COMPANY = {
   name: "Корпорація «ГУАРД»",
-  shortName: "ГУАРД",
+  shortName: "«ГУАРД»",
   slogan: "Надійна охорона в Дніпрі",
   city: "м. Дніпро, Україна",
   legacyUrl: "https://guard.ua",

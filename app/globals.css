@@ -4,8 +4,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0d1a35;
-  --border: #e5e9f2;
+  --foreground: #1e2a06;
+  --border: #dde0d0;
   --ring: #c9a84c;
 }
 
@@ -15,7 +15,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px; /* offset for sticky header on anchor jumps */
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -41,7 +41,6 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  /* subtle shield/grid pattern overlay for dark hero areas */
   .bg-shield-grid {
     background-image:
       linear-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px),
@@ -50,7 +49,6 @@ body {
   }
 }
 
-/* hide scrollbar on horizontal sliders if any */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

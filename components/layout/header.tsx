@@ -8,7 +8,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PHONES } from "@/lib/site";
 import { Logo } from "./logo";
-import { LanguageToggle } from "@/components/language-toggle";
+
 import { CallbackModal } from "@/components/callback-modal";
 
 const NAV = [
@@ -19,6 +19,7 @@ const NAV = [
   { key: "grupy", href: "/mobilni-grupy" },
   { key: "kontakti", href: "/kontakti" },
   { key: "vakansii", href: "/vakansii" },
+  { key: "licenzii", href: "/licenzii" },
   { key: "vidguky", href: "/#reviews" },
 ] as const;
 
@@ -63,7 +64,7 @@ export function Header() {
               ))}
             </div>
           </div>
-          <LanguageToggle className="text-light" />
+          
         </div>
       </div>
 
@@ -156,7 +157,7 @@ export function Header() {
               ))}
             </div>
             <div className="flex items-center justify-between">
-              <LanguageToggle className="text-navy-dark" />
+              
               <CallbackModal variant="danger" size="sm" />
             </div>
           </div>

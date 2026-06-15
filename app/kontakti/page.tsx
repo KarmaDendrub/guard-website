@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, Building2 } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { CallbackModal } from "@/components/callback-modal";
-import { PHONES, COMPANY } from "@/lib/site";
+import { PHONES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Контакти",
-  description: "Контакти Корпорації ГУАРД у Дніпрі: телефони, адреса, режим роботи.",
+  description: "Контакти Корпорації «ГУАРД» у Дніпрі: телефони, адреса, режим роботи.",
 };
 
 export default function KontaktiPage() {
@@ -20,6 +20,26 @@ export default function KontaktiPage() {
       <section className="bg-white py-16 sm:py-20">
         <div className="container-x grid gap-10 lg:grid-cols-2">
           <div className="space-y-8">
+
+            <div className="flex gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
+                <Building2 className="h-6 w-6" />
+              </span>
+              <div>
+                <h3 className="font-heading text-lg font-bold text-navy-dark">Адреса офісу</h3>
+                <p className="mt-2 text-navy/70">м. Дніпро, вул. Калинова, 87</p>
+                <a
+                  href="https://maps.app.goo.gl/GUARD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex items-center gap-1 text-sm text-gold-dark hover:underline"
+                >
+                  <MapPin className="h-3.5 w-3.5" />
+                  Відкрити в Google Maps
+                </a>
+              </div>
+            </div>
+
             <div className="flex gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
                 <Phone className="h-6 w-6" />
@@ -38,16 +58,6 @@ export default function KontaktiPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
-                <MapPin className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Адреса</h3>
-                <p className="mt-2 text-navy/70">{COMPANY.city}</p>
               </div>
             </div>
 
@@ -73,15 +83,18 @@ export default function KontaktiPage() {
                 <CallbackModal variant="danger" className="mt-3" />
               </div>
             </div>
+
           </div>
 
+          {/* Google Maps — точный Place ID */}
           <div className="overflow-hidden rounded-2xl shadow-card-hover">
             <iframe
-              title="Карта — Дніпро"
-              src="https://www.google.com/maps?q=Дніпро&output=embed"
-              className="h-full min-h-[400px] w-full border-0"
+              title="Корпорація «ГУАРД» на карті"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2641.5!2d35.0519!3d48.5148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d958b89002dcbd%3A0x8babb2835c25531a!2z0JPQo9CQ0KDQlCAoR1VBUkQp!5e0!3m2!1suk!2sua!4v1718000000000!5m2!1suk!2sua"
+              className="h-full min-h-[480px] w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
           </div>
         </div>

@@ -17,19 +17,23 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // GUARD brand palette
+        // GUARD brand palette — olive + gold
         navy: {
-          DEFAULT: "#1A2C5B", // corporate navy (primary)
-          dark: "#0D1A35", // near-black blue (hero bg)
+          DEFAULT: "#3a4a10", // olive (primary)
+          dark: "#1e2a06",   // dark olive (hero bg)
         },
         gold: {
           DEFAULT: "#C9A84C", // shield gold (accent)
           light: "#DBC078",
           dark: "#A98A38",
         },
-        danger: "#E63030", // emergency CTA red
-        light: "#F4F6FA", // section background
-        // shadcn-style aliases
+        olive: {
+          DEFAULT: "#6a760c", // main olive
+          dark: "#4a5208",
+          light: "#8a9a1a",
+        },
+        danger: "#E63030",
+        light: "#F4F5EE", // slightly warm light bg
         background: "var(--background)",
         foreground: "var(--foreground)",
         border: "var(--border)",
@@ -40,12 +44,12 @@ const config: Config = {
         heading: ["var(--font-heading)", "Arial", "sans-serif"],
       },
       backgroundImage: {
-        "navy-gradient": "linear-gradient(135deg, #0D1A35 0%, #1A2C5B 100%)",
-        "navy-gradient-r": "linear-gradient(90deg, #0D1A35 0%, #1A2C5B 100%)",
+        "navy-gradient": "linear-gradient(135deg, #1e2a06 0%, #3a4a10 100%)",
+        "navy-gradient-r": "linear-gradient(90deg, #1e2a06 0%, #3a4a10 100%)",
       },
       boxShadow: {
-        card: "0 4px 24px -6px rgba(13, 26, 53, 0.12)",
-        "card-hover": "0 12px 40px -8px rgba(13, 26, 53, 0.25)",
+        card: "0 4px 24px -6px rgba(30, 42, 6, 0.12)",
+        "card-hover": "0 12px 40px -8px rgba(30, 42, 6, 0.25)",
         gold: "0 0 0 1px #C9A84C, 0 12px 32px -8px rgba(201, 168, 76, 0.35)",
       },
       keyframes: {
