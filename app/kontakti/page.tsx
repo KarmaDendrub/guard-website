@@ -1,13 +1,57 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, Mail, Building2 } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, Building2, Users, Calculator, FileText } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { CallbackModal } from "@/components/callback-modal";
-import { PHONES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Контакти",
   description: "Контакти Корпорації «ГУАРД» у Дніпрі: телефони, адреса, режим роботи.",
 };
+
+const DEPARTMENTS = [
+  {
+    icon: Building2,
+    title: "Приймальна офісу",
+    phones: ["+38 (056) 766-07-17", "+38 (067) 632-19-91", "+38 (066) 235-74-19", "+38 (063) 308-93-76"],
+  },
+  {
+    icon: FileText,
+    title: "Договірний відділ",
+    phones: ["+38 (067) 005-74-76"],
+  },
+  {
+    icon: Calculator,
+    title: "Бухгалтерія",
+    phones: ["+38 (056) 766-07-22"],
+  },
+  {
+    icon: Users,
+    title: "Відділ кадрів",
+    phones: ["+38 (067) 577-38-65", "+38 (063) 347-78-64"],
+    email: "kadry@guard.ua",
+  },
+  {
+    icon: Phone,
+    title: "Диспетчерська служба «ГУАРД» (Дніпро, вул. Калинова, 87)",
+    phones: [
+      "+38 (056) 766-07-18",
+      "+38 (067) 543-00-83",
+      "+38 (067) 634-43-42",
+      "+38 (050) 484-27-14",
+      "+38 (050) 484-26-84",
+      "+38 (093) 750-27-84",
+    ],
+  },
+  {
+    icon: MapPin,
+    title: "Новомосковська філія (м. Самар, вул. Гідності, 52, оф. 320)",
+    phones: ["+38 (067) 632-19-91", "+38 (066) 235-74-19", "+38 (063) 308-93-76"],
+  },
+];
+
+function telHref(display: string) {
+  return "tel:" + display.replace(/[^\d+]/g, "");
+}
 
 export default function KontaktiPage() {
   return (
@@ -23,46 +67,6 @@ export default function KontaktiPage() {
 
             <div className="flex gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
-                <Building2 className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Адреса офісу</h3>
-                <p className="mt-2 text-navy/70">м. Дніпро, вул. Калинова, 87</p>
-                <a
-                  href="https://maps.app.goo.gl/GUARD"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 inline-flex items-center gap-1 text-sm text-gold-dark hover:underline"
-                >
-                  <MapPin className="h-3.5 w-3.5" />
-                  Відкрити в Google Maps
-                </a>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
-                <Phone className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Телефони</h3>
-                <ul className="mt-2 space-y-1">
-                  {PHONES.map((p) => (
-                    <li key={p.tel}>
-                      <a
-                        href={`tel:${p.tel}`}
-                        className="font-medium text-navy transition-colors hover:text-gold-dark"
-                      >
-                        {p.display}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
                 <Clock className="h-6 w-6" />
               </span>
               <div>
@@ -74,6 +78,62 @@ export default function KontaktiPage() {
             <div className="flex gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
                 <Mail className="h-6 w-6" />
+              </span>
+              <div>
+                <h3 className="font-heading text-lg font-bold text-navy-dark">Загальна пошта</h3>
+                <a
+                  href="mailto:office@guard.ua"
+                  className="mt-2 inline-block font-medium text-navy transition-colors hover:text-gold-dark"
+                >
+                  office@guard.ua
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              {DEPARTMENTS.map((dept) => {
+                const Icon = dept.icon;
+                return (
+                  <div
+                    key={dept.title}
+                    className="rounded-2xl border border-border bg-light p-5"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold/15 text-gold-dark">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <h4 className="font-heading text-sm font-bold leading-snug text-navy-dark">
+                        {dept.title}
+                      </h4>
+                    </div>
+                    <ul className="mt-3 space-y-1">
+                      {dept.phones.map((p) => (
+                        <li key={p}>
+                          <a
+                            href={telHref(p)}
+                            className="text-sm font-medium text-navy transition-colors hover:text-gold-dark"
+                          >
+                            {p}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    {dept.email && (
+                      <a
+                        href={`mailto:${dept.email}`}
+                        className="mt-2 inline-block text-sm text-gold-dark hover:underline"
+                      >
+                        {dept.email}
+                      </a>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="flex gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
+                <Phone className="h-6 w-6" />
               </span>
               <div>
                 <h3 className="font-heading text-lg font-bold text-navy-dark">Зворотній зв'язок</h3>
