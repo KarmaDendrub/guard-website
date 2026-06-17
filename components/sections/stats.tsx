@@ -13,8 +13,8 @@ type Stat = {
 
 const STATS: Stat[] = [
   { value: 70, suffix: "", labelKey: "groups", icon: Car },
-  { value: 25, suffix: "+", labelKey: "years", icon: Award },
-  { value: 5000, suffix: "+", labelKey: "objects", icon: Building2 },
+  { value: 20, suffix: "+", labelKey: "years", icon: Award },
+  { value: 20000, suffix: "+", labelKey: "objects", icon: Building2 },
   { value: 24, suffix: "/7", labelKey: "react", icon: Clock },
 ];
 
