@@ -28,7 +28,7 @@ export function Logo({
         <span
           className={cn(
             "font-heading text-xl font-extrabold tracking-tight",
-            variant === "dark" ? "text-white" : "text-navy-dark"
+            variant === "dark" ? "text-white" : "text-ink"
           )}
         >
           ГУАРД

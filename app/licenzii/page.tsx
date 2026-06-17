@@ -46,10 +46,10 @@ export default function LicenziiPage() {
               <Shield className="h-7 w-7" />
             </span>
             <div>
-              <h2 className="font-heading text-xl font-bold text-navy-dark">
+              <h2 className="font-heading text-xl font-bold text-ink">
                 Офіційно ліцензована охоронна компанія
               </h2>
-              <p className="mt-2 text-navy/70">
+              <p className="mt-2 text-ink/70">
                 Корпорація «ГУАРД» здійснює охоронну діяльність на підставі ліцензій та дозволів, 
                 виданих уповноваженими органами державної влади України. Всі документи знаходяться 
                 у відповідних реєструючих органах та відкриті для перевірки.
@@ -68,18 +68,18 @@ export default function LicenziiPage() {
                   <Award className="h-16 w-16 text-gold/40" />
                 </div>
                 <div>
-                  <h3 className="font-heading text-base font-bold text-navy-dark">
+                  <h3 className="font-heading text-base font-bold text-ink">
                     {lic.title}
                   </h3>
                   <p className="mt-1 text-sm font-semibold text-gold-dark">{lic.number}</p>
-                  <p className="mt-1 text-sm text-navy/60">{lic.issued}</p>
-                  <p className="text-sm text-navy/50">{lic.date}</p>
+                  <p className="mt-1 text-sm text-ink/60">{lic.issued}</p>
+                  <p className="text-sm text-ink/50">{lic.date}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 text-center text-sm text-navy/50">
+          <p className="mt-10 text-center text-sm text-ink/50">
             Для перевірки актуальності документів зверніться до нашого офісу або зателефонуйте.
           </p>
         </div>

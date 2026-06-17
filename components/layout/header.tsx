@@ -45,11 +45,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* Utility bar: phones + language */}
-      <div className="hidden bg-navy-dark text-light/90 lg:block">
+      <div className="hidden bg-navy-dark text-ink/90 lg:block">
         <div className="container-x flex h-10 items-center justify-between text-sm">
-          <div className="flex items-center gap-1 text-gold-light">
+          <div className="flex items-center gap-1 text-gold-dark">
             <Phone className="h-3.5 w-3.5" />
-            <span className="mr-1 text-xs uppercase tracking-wider text-light/60">
+            <span className="mr-1 text-xs uppercase tracking-wider text-ink/60">
               {tCommon("phones")}:
             </span>
             <div className="flex items-center gap-4">
@@ -57,7 +57,7 @@ export function Header() {
                 <a
                   key={p.tel}
                   href={`tel:${p.tel}`}
-                  className="font-medium text-light transition-colors hover:text-gold"
+                  className="font-medium text-ink transition-colors hover:text-gold-dark"
                 >
                   {p.display}
                 </a>
@@ -92,8 +92,8 @@ export function Header() {
                   className={cn(
                     "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     active
-                      ? "text-navy-dark"
-                      : "text-navy/70 hover:text-navy-dark",
+                      ? "text-ink"
+                      : "text-ink/70 hover:text-ink",
                     "after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-gold after:transition-transform hover:after:scale-x-100",
                     active && "after:scale-x-100"
                   )}
@@ -112,7 +112,7 @@ export function Header() {
           <div className="flex items-center gap-2 xl:hidden">
             <a
               href={`tel:${PHONES[0].tel}`}
-              className="flex h-10 w-10 items-center justify-center rounded-md bg-navy text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-md bg-navy text-ink"
               aria-label="Зателефонувати"
             >
               <Phone className="h-5 w-5" />
@@ -120,7 +120,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-navy-dark"
+              className="flex h-10 w-10 items-center justify-center rounded-md border border-border text-ink"
               aria-label="Меню"
               aria-expanded={menuOpen}
             >
@@ -138,7 +138,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="border-b border-border/60 py-3 text-base font-medium text-navy-dark last:border-0"
+                className="border-b border-border/60 py-3 text-base font-medium text-ink last:border-0"
               >
                 {t(item.key)}
               </Link>
@@ -150,7 +150,7 @@ export function Header() {
                 <a
                   key={p.tel}
                   href={`tel:${p.tel}`}
-                  className="text-sm font-medium text-navy hover:text-gold"
+                  className="text-sm font-medium text-ink hover:text-gold-dark"
                 >
                   {p.display}
                 </a>

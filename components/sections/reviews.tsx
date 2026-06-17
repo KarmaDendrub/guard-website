@@ -27,29 +27,29 @@ export async function ReviewsSection() {
       <div className="absolute inset-x-0 bg-shield-grid" />
       <div className="container-x relative">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {t("title")}
           </h2>
           <div className="gold-divider" />
-          <p className="mt-4 text-light/60">{t("subtitle")}</p>
+          <p className="mt-4 text-ink/60">{t("subtitle")}</p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {REVIEWS.map((r) => (
             <figure
               key={r.name}
-              className="relative flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur"
+              className="relative flex flex-col rounded-2xl border border-black/10 bg-black/5 p-7 backdrop-blur"
             >
-              <Quote className="h-9 w-9 text-gold/40" />
-              <div className="mt-3 flex gap-0.5 text-gold">
+              <Quote className="h-9 w-9 text-gold-dark/40" />
+              <div className="mt-3 flex gap-0.5 text-gold-dark">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-gold" />
                 ))}
               </div>
-              <blockquote className="mt-4 flex-1 text-light/80">{r.text}</blockquote>
-              <figcaption className="mt-6 border-t border-white/10 pt-4">
-                <p className="font-semibold text-white">{r.name}</p>
-                <p className="text-sm text-gold-light">{r.role}</p>
+              <blockquote className="mt-4 flex-1 text-ink/80">{r.text}</blockquote>
+              <figcaption className="mt-6 border-t border-black/10 pt-4">
+                <p className="font-semibold text-ink">{r.name}</p>
+                <p className="text-sm text-gold-dark">{r.role}</p>
               </figcaption>
             </figure>
           ))}

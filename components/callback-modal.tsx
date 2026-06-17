@@ -57,7 +57,7 @@ export function CallbackModal({
         {submitted ? (
           <div className="flex flex-col items-center gap-3 py-8 text-center">
             <CheckCircle2 className="h-14 w-14 text-gold" />
-            <p className="text-lg font-semibold text-navy-dark">{t("success")}</p>
+            <p className="text-lg font-semibold text-ink">{t("success")}</p>
           </div>
         ) : (
           <>
@@ -67,23 +67,23 @@ export function CallbackModal({
             </DialogHeader>
             <form onSubmit={handleSubmit} className="mt-2 flex flex-col gap-4">
               <label className="flex flex-col gap-1.5">
-                <span className="text-sm font-medium text-navy-dark">{t("name")}</span>
+                <span className="text-sm font-medium text-ink">{t("name")}</span>
                 <input
                   type="text"
                   name="name"
                   required
                   placeholder={t("namePlaceholder")}
-                  className="h-11 rounded-md border border-border px-3 text-navy-dark outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
+                  className="h-11 rounded-md border border-border px-3 text-ink outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
                 />
               </label>
               <label className="flex flex-col gap-1.5">
-                <span className="text-sm font-medium text-navy-dark">{t("phone")}</span>
+                <span className="text-sm font-medium text-ink">{t("phone")}</span>
                 <input
                   type="tel"
                   name="phone"
                   required
                   placeholder={t("phonePlaceholder")}
-                  className="h-11 rounded-md border border-border px-3 text-navy-dark outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
+                  className="h-11 rounded-md border border-border px-3 text-ink outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
                 />
               </label>
               <Button type="submit" variant="danger" size="lg" className="mt-2 w-full">

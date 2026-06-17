@@ -43,14 +43,14 @@ function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
   const Icon = stat.icon;
   return (
     <div className="flex flex-col items-center text-center">
-      <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gold/15 text-gold">
+      <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
         <Icon className="h-7 w-7" />
       </span>
-      <span className="font-heading text-4xl font-extrabold text-white sm:text-5xl">
+      <span className="font-heading text-4xl font-extrabold text-ink sm:text-5xl">
         {count.toLocaleString("uk-UA")}
-        <span className="text-gold">{stat.suffix}</span>
+        <span className="text-gold-dark">{stat.suffix}</span>
       </span>
-      <span className="mt-2 text-sm font-medium uppercase tracking-wide text-light/60">
+      <span className="mt-2 text-sm font-medium uppercase tracking-wide text-ink/60">
         {t(stat.labelKey)}
       </span>
     </div>

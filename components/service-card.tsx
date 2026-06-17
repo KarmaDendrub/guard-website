@@ -60,10 +60,10 @@ export function ServiceCard({ service, more }: { service: Service; more: string 
         </span>
       </div>
       <div className="flex flex-1 flex-col p-5 pt-8">
-        <h3 className="font-heading text-base font-bold leading-snug text-navy-dark transition-colors group-hover:text-olive">
+        <h3 className="font-heading text-base font-bold leading-snug text-ink transition-colors group-hover:text-olive">
           {service.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-navy/60">
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/60">
           {service.description}
         </p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-olive">

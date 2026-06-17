@@ -30,7 +30,7 @@ body {
     @apply mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8;
   }
   .section-title {
-    @apply font-heading text-3xl font-bold tracking-tight text-navy-dark sm:text-4xl;
+    @apply font-heading text-3xl font-bold tracking-tight text-ink sm:text-4xl;
   }
   .gold-divider {
     @apply mx-auto mt-4 h-1 w-20 rounded-full bg-gold;

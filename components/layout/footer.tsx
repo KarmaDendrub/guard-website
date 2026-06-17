@@ -14,11 +14,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-dark text-light/80">
+    <footer className="bg-navy-dark text-ink/80">
       {/* Socials strip */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-black/10">
         <div className="container-x flex flex-col items-center gap-4 py-6 sm:flex-row sm:justify-between">
-          <span className="font-heading text-lg font-semibold text-white">
+          <span className="font-heading text-lg font-semibold text-ink">
             {tSocial("title")}
           </span>
           <div className="flex items-center gap-3">
@@ -29,7 +29,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.name}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 text-gold-light transition-all hover:bg-gold hover:text-navy-dark"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 text-gold-dark transition-all hover:bg-gold hover:text-ink"
               >
                 <SocialIcon name={s.icon} />
               </a>
@@ -41,20 +41,20 @@ export function Footer() {
       {/* Main footer columns */}
       <div className="container-x grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
-          <Logo variant="dark" />
-          <p className="max-w-xs text-sm leading-relaxed text-light/60">
+          <Logo />
+          <p className="max-w-xs text-sm leading-relaxed text-ink/60">
             {t("tagline")}
           </p>
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
             {t("services")}
           </h3>
           <ul className="space-y-2 text-sm">
             {SERVICES.slice(0, 7).map((s) => (
               <li key={s.key}>
-                <Link href={s.href} className="transition-colors hover:text-gold">
+                <Link href={s.href} className="transition-colors hover:text-gold-dark">
                   {s.title}
                 </Link>
               </li>
@@ -63,13 +63,13 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
             {t("company")}
           </h3>
           <ul className="space-y-2 text-sm">
             {NAV_LINKS.filter((l) => l.href !== "/").map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="transition-colors hover:text-gold">
+                <Link href={l.href} className="transition-colors hover:text-gold-dark">
                   {l.label}
                 </Link>
               </li>
@@ -78,7 +78,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
             {t("contacts")}
           </h3>
           <ul className="space-y-2 text-sm">
@@ -86,15 +86,15 @@ export function Footer() {
               <li key={p.tel}>
                 <a
                   href={`tel:${p.tel}`}
-                  className="flex items-center gap-2 transition-colors hover:text-gold"
+                  className="flex items-center gap-2 transition-colors hover:text-gold-dark"
                 >
-                  <Phone className="h-3.5 w-3.5 text-gold" />
+                  <Phone className="h-3.5 w-3.5 text-gold-dark" />
                   {p.display}
                 </a>
               </li>
             ))}
-            <li className="flex items-start gap-2 pt-2 text-light/60">
-              <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />
+            <li className="flex items-start gap-2 pt-2 text-ink/60">
+              <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-dark" />
               {COMPANY.city}
             </li>
           </ul>
@@ -102,8 +102,8 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-between gap-4 py-5 text-sm text-light/50 sm:flex-row">
+      <div className="border-t border-black/10">
+        <div className="container-x flex flex-col items-center justify-between gap-4 py-5 text-sm text-ink/50 sm:flex-row">
           <p>
             © {year} {COMPANY.name}. {t("rights")}
           </p>

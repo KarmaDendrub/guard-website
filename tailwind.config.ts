@@ -19,8 +19,12 @@ const config: Config = {
       colors: {
         // GUARD brand palette — olive + gold
         navy: {
-          DEFAULT: "#b5b557", // light olive (primary)
-          dark: "#7d7d2e",   // dark olive (hero bg / readable white text)
+          DEFAULT: "#b5b557", // light olive (primary surface)
+          dark: "#9c9c39",   // deeper olive (gradients / depth)
+        },
+        ink: {
+          DEFAULT: "#23290b", // near-black olive — text on light surfaces
+          light: "#3a4a10",
         },
         gold: {
           DEFAULT: "#C9A84C", // shield gold (accent)
@@ -44,8 +48,8 @@ const config: Config = {
         heading: ["var(--font-heading)", "Arial", "sans-serif"],
       },
       backgroundImage: {
-        "navy-gradient": "linear-gradient(135deg, #7d7d2e 0%, #b5b557 100%)",
-        "navy-gradient-r": "linear-gradient(90deg, #7d7d2e 0%, #b5b557 100%)",
+        "navy-gradient": "linear-gradient(135deg, #9c9c39 0%, #b5b557 100%)",
+        "navy-gradient-r": "linear-gradient(90deg, #9c9c39 0%, #b5b557 100%)",
       },
       boxShadow: {
         card: "0 4px 24px -6px rgba(30, 42, 6, 0.12)",

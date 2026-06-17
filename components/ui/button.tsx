@@ -10,19 +10,19 @@ const buttonVariants = cva(
       variant: {
         // primary navy
         default:
-          "bg-navy text-white hover:bg-navy-dark shadow-card hover:shadow-card-hover",
+          "bg-navy text-ink hover:bg-navy-dark shadow-card hover:shadow-card-hover",
         // emergency red CTA
         danger:
           "bg-danger text-white hover:bg-[#c41f1f] shadow-card hover:shadow-card-hover",
         // gold outline (on dark backgrounds)
         outlineGold:
-          "border-2 border-gold text-gold bg-transparent hover:bg-gold hover:text-navy-dark",
+          "border-2 border-gold text-gold bg-transparent hover:bg-gold hover:text-ink",
         // gold solid
-        gold: "bg-gold text-navy-dark hover:bg-gold-dark shadow-card",
+        gold: "bg-gold text-ink hover:bg-gold-dark shadow-card",
         outline:
-          "border border-border bg-white text-navy hover:border-gold hover:text-navy-dark",
-        ghost: "text-navy hover:bg-light hover:text-navy-dark",
-        link: "text-navy underline-offset-4 hover:text-gold hover:underline",
+          "border border-border bg-white text-ink hover:border-gold hover:text-ink",
+        ghost: "text-ink hover:bg-light hover:text-ink",
+        link: "text-ink underline-offset-4 hover:text-gold hover:underline",
       },
       size: {
         default: "h-11 px-6 py-2",

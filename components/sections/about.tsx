@@ -16,7 +16,7 @@ export async function AboutSection() {
             {t("title")}
           </span>
           <div className="mt-3 h-1 w-20 rounded-full bg-gold" />
-          <p className="mt-6 text-lg leading-relaxed text-navy/80">{t("text")}</p>
+          <p className="mt-6 text-lg leading-relaxed text-ink/80">{t("text")}</p>
           <Button asChild variant="default" size="lg" className="mt-8">
             <Link href="/mobilni-grupy">
               <MapPin />

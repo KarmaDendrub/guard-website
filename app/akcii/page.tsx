@@ -52,10 +52,10 @@ export default function AkciiPage() {
                 <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
                   <Icon className="h-7 w-7" />
                 </span>
-                <h3 className="mt-5 font-heading text-xl font-bold text-navy-dark">
+                <h3 className="mt-5 font-heading text-xl font-bold text-ink">
                   {p.title}
                 </h3>
-                <p className="mt-3 flex-1 text-navy/60">{p.text}</p>
+                <p className="mt-3 flex-1 text-ink/60">{p.text}</p>
                 <span className="mt-5 flex items-center gap-1.5 text-sm font-medium text-gold-dark">
                   <Clock className="h-4 w-4" />
                   Пропозиція обмежена в часі

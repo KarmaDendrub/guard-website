@@ -39,10 +39,10 @@ export function PostDetail({
               className="object-cover"
             />
           </div>
-          <p className="mt-8 text-lg leading-relaxed text-navy/80">{post.body}</p>
+          <p className="mt-8 text-lg leading-relaxed text-ink/80">{post.body}</p>
           <Link
             href={backHref}
-            className="mt-10 inline-flex items-center gap-2 font-semibold text-gold-dark transition-colors hover:text-navy-dark"
+            className="mt-10 inline-flex items-center gap-2 font-semibold text-gold-dark transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-4 w-4" />
             {backLabel}

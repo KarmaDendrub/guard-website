@@ -36,8 +36,8 @@ export function ServiceDetail({ serviceKey }: { serviceKey: string }) {
             />
           </div>
           <div>
-            <p className="text-lg leading-relaxed text-navy/80">{service.description}</p>
-            <p className="mt-4 leading-relaxed text-navy/60">
+            <p className="text-lg leading-relaxed text-ink/80">{service.description}</p>
+            <p className="mt-4 leading-relaxed text-ink/60">
               Корпорація «ГУАРД» забезпечує повний цикл послуги «{service.title}» — від
               консультації та проєктування до монтажу, підключення на пульт та
               подальшого технічного обслуговування. Ми гарантуємо надійність,
@@ -48,7 +48,7 @@ export function ServiceDetail({ serviceKey }: { serviceKey: string }) {
               {BENEFITS.map((b) => (
                 <li key={b} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-                  <span className="text-navy/80">{b}</span>
+                  <span className="text-ink/80">{b}</span>
                 </li>
               ))}
             </ul>
@@ -67,7 +67,7 @@ export function ServiceDetail({ serviceKey }: { serviceKey: string }) {
                 href={s.href}
                 className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-white p-5 shadow-card transition-all hover:border-gold hover:shadow-card-hover"
               >
-                <span className="font-semibold text-navy-dark">{s.title}</span>
+                <span className="font-semibold text-ink">{s.title}</span>
                 <ArrowRight className="h-5 w-5 shrink-0 text-gold transition-transform group-hover:translate-x-1" />
               </Link>
             ))}

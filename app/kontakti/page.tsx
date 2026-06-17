@@ -70,8 +70,8 @@ export default function KontaktiPage() {
                 <Clock className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Режим роботи</h3>
-                <p className="mt-2 text-navy/70">Цілодобово, без вихідних — 24/7</p>
+                <h3 className="font-heading text-lg font-bold text-ink">Режим роботи</h3>
+                <p className="mt-2 text-ink/70">Цілодобово, без вихідних — 24/7</p>
               </div>
             </div>
 
@@ -80,10 +80,10 @@ export default function KontaktiPage() {
                 <Mail className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Загальна пошта</h3>
+                <h3 className="font-heading text-lg font-bold text-ink">Загальна пошта</h3>
                 <a
                   href="mailto:office@guard.ua"
-                  className="mt-2 inline-block font-medium text-navy transition-colors hover:text-gold-dark"
+                  className="mt-2 inline-block font-medium text-ink transition-colors hover:text-gold-dark"
                 >
                   office@guard.ua
                 </a>
@@ -102,7 +102,7 @@ export default function KontaktiPage() {
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold/15 text-gold-dark">
                         <Icon className="h-5 w-5" />
                       </span>
-                      <h4 className="font-heading text-sm font-bold leading-snug text-navy-dark">
+                      <h4 className="font-heading text-sm font-bold leading-snug text-ink">
                         {dept.title}
                       </h4>
                     </div>
@@ -111,7 +111,7 @@ export default function KontaktiPage() {
                         <li key={p}>
                           <a
                             href={telHref(p)}
-                            className="text-sm font-medium text-navy transition-colors hover:text-gold-dark"
+                            className="text-sm font-medium text-ink transition-colors hover:text-gold-dark"
                           >
                             {p}
                           </a>
@@ -136,8 +136,8 @@ export default function KontaktiPage() {
                 <Phone className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="font-heading text-lg font-bold text-navy-dark">Зворотній зв'язок</h3>
-                <p className="mt-2 text-navy/70">
+                <h3 className="font-heading text-lg font-bold text-ink">Зворотній зв'язок</h3>
+                <p className="mt-2 text-ink/70">
                   Залиште заявку — і ми передзвонимо вам найближчим часом.
                 </p>
                 <CallbackModal variant="danger" className="mt-3" />
