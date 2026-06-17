@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
-import { Shield, Award } from "lucide-react";
+import { Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Ліцензії та сертифікати",
@@ -9,25 +10,22 @@ export const metadata: Metadata = {
 
 const LICENSES = [
   {
-    title: "Ліцензія на охоронну діяльність",
-    number: "№ АВ 123456",
-    issued: "Міністерство внутрішніх справ України",
-    date: "2010 р.",
-    image: null,
+    title: "Офіційний представник ТОВ «Охорона і Безпека»",
+    issued: "ТМ «Орлан», «Лунь», «Алет» та «Granat», м. Дніпро",
+    date: "2026 р.",
+    image: "/images/licenses/license-1.jpg",
   },
   {
-    title: "Дозвіл на використання зброї",
-    number: "№ ОЗ 654321",
-    issued: "Національна поліція України",
-    date: "2015 р.",
-    image: null,
+    title: "Ajax Authorized Security Company",
+    issued: "Сертифікат Ajax Systems · № UA20262003858",
+    date: "дійсний до 31.12.2026",
+    image: "/images/licenses/license-2.jpg",
   },
   {
-    title: "Сертифікат монтажної організації",
-    number: "№ СМ 789012",
-    issued: "Державний центр сертифікації",
-    date: "2018 р.",
-    image: null,
+    title: "Офіційний дилер ТОВ «Охоронні системи»",
+    issued: "ТМ «GSN Electronic», «Elmes electronic» та «CROW»",
+    date: "дійсний до 31.12.2027",
+    image: "/images/licenses/license-3.jpg",
   },
 ];
 
@@ -50,8 +48,8 @@ export default function LicenziiPage() {
                 Офіційно ліцензована охоронна компанія
               </h2>
               <p className="mt-2 text-ink/70">
-                Корпорація «ГУАРД» здійснює охоронну діяльність на підставі ліцензій та дозволів, 
-                виданих уповноваженими органами державної влади України. Всі документи знаходяться 
+                Корпорація «ГУАРД» здійснює охоронну діяльність на підставі ліцензій та дозволів,
+                виданих уповноваженими органами державної влади України. Всі документи знаходяться
                 у відповідних реєструючих органах та відкриті для перевірки.
               </p>
             </div>
@@ -60,20 +58,24 @@ export default function LicenziiPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {LICENSES.map((lic) => (
               <div
-                key={lic.number}
+                key={lic.title}
                 className="flex flex-col gap-4 rounded-2xl border border-border bg-white p-6 shadow-card transition hover:shadow-card-hover"
               >
-                {/* Placeholder for license image */}
-                <div className="flex aspect-[3/2] items-center justify-center rounded-xl bg-navy-dark/5">
-                  <Award className="h-16 w-16 text-gold/40" />
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-light">
+                  <Image
+                    src={lic.image}
+                    alt={lic.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="font-heading text-base font-bold text-ink">
                     {lic.title}
                   </h3>
-                  <p className="mt-1 text-sm font-semibold text-gold-dark">{lic.number}</p>
                   <p className="mt-1 text-sm text-ink/60">{lic.issued}</p>
-                  <p className="text-sm text-ink/50">{lic.date}</p>
+                  <p className="mt-1 text-sm font-semibold text-gold-dark">{lic.date}</p>
                 </div>
               </div>
             ))}
