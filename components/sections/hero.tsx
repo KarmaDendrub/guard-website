@@ -61,11 +61,11 @@ export function Hero() {
 
       {/* Overlays — keep the photo visible, darken only where text/controls sit */}
       {/* light base tint for brand cohesion */}
-      <div className="absolute inset-0 bg-navy-dark/20" />
+      <div className="absolute inset-0 bg-navy-dark/10" />
       {/* darken the left side, under the heading; fades out to the right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/70 via-navy-dark/20 to-transparent" />
       {/* darken the bottom, under the slider controls */}
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/45 via-transparent to-transparent" />
       {/* subtle shield grid */}
       <div className="absolute inset-0 bg-shield-grid opacity-50" />
 
@@ -76,10 +76,10 @@ export function Hero() {
             <span className="h-2 w-2 animate-pulse rounded-full bg-gold" />
             24/7 · Дніпро
           </span>
-          <h1 className="font-heading text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="font-heading text-4xl font-extrabold leading-tight text-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)] sm:text-5xl lg:text-6xl">
             {t("title")}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-light/80 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg font-medium text-black/80 sm:text-xl">
             {t("subtitle")}
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
