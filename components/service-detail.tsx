@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { SERVICES } from "@/lib/services";
+import { SERVICES, ALL_SERVICES } from "@/lib/services";
 import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
 
@@ -14,7 +14,7 @@ const BENEFITS = [
 ];
 
 export function ServiceDetail({ serviceKey }: { serviceKey: string }) {
-  const service = SERVICES.find((s) => s.key === serviceKey);
+  const service = ALL_SERVICES.find((s) => s.key === serviceKey);
   if (!service) notFound();
 
   const related = SERVICES.filter((s) => s.key !== serviceKey).slice(0, 4);

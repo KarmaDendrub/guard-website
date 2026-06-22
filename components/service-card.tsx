@@ -15,6 +15,8 @@ import {
   MessageSquare,
   Satellite,
   Wrench,
+  Radio,
+  Bell,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -35,6 +37,8 @@ const ICONS: Record<string, LucideIcon> = {
   MessageSquare,
   Satellite,
   Wrench,
+  Radio,
+  Bell,
 };
 
 export function ServiceCard({ service, more }: { service: Service; more: string }) {

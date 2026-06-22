@@ -31,6 +31,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# source assets / legacy copies (not part of the app)
+/22062026
+/guard-website-main
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ServiceDetail } from "@/components/service-detail";
 
 export const metadata: Metadata = {
-  title: "SMS ГУАРД",
+  title: "SMS-ГУАРД",
 };
 
 export default function Page() {

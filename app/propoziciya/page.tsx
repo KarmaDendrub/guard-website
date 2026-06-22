@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
-  title: "Пропозиції",
+  title: "Послуги",
   description: "Повний перелік охоронних послуг Корпорації ГУАРД у Дніпрі.",
 };
 
@@ -15,9 +15,9 @@ export default async function PropoziciyaPage() {
   return (
     <>
       <PageHeader
-        title="Наші пропозиції"
+        title="Наші послуги"
         subtitle="Повний спектр послуг безпеки для дому та бізнесу — оберіть рішення, що підходить саме вам."
-        breadcrumb="Пропозиції"
+        breadcrumb="Послуги"
       />
       <section className="bg-light py-16 sm:py-20">
         <div className="container-x grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
