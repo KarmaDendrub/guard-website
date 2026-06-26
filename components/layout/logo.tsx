@@ -5,10 +5,13 @@ import { cn } from "@/lib/utils";
 export function Logo({
   className,
   variant = "light",
+  src = "/images/logo.png",
 }: {
   className?: string;
   /** "light" = dark text (on white header), "dark" = light text (on navy footer) */
   variant?: "light" | "dark";
+  /** Logo image source (editable via Sanity siteSettings). */
+  src?: string;
 }) {
   return (
     <Link
@@ -17,7 +20,7 @@ export function Logo({
       aria-label="Корпорація ГУАРД — на головну"
     >
       <Image
-        src="/images/logo.png"
+        src={src}
         alt="Емблема Корпорації ГУАРД"
         width={84}
         height={126}

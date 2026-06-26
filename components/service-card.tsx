@@ -20,7 +20,7 @@ import {
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
-import type { Service } from "@/lib/services";
+import type { ServiceContent } from "@/lib/content";
 
 const ICONS: Record<string, LucideIcon> = {
   MonitorCheck,
@@ -41,7 +41,13 @@ const ICONS: Record<string, LucideIcon> = {
   Bell,
 };
 
-export function ServiceCard({ service, more }: { service: Service; more: string }) {
+export function ServiceCard({
+  service,
+  more,
+}: {
+  service: ServiceContent;
+  more: string;
+}) {
   const Icon = ICONS[service.icon] ?? MonitorCheck;
 
   return (

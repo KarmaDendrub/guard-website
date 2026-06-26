@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PHONES } from "@/lib/site";
+import { PHONES as DEFAULT_PHONES } from "@/lib/site";
+import type { Phone as PhoneInfo } from "@/sanity/lib/api";
 import { Logo } from "./logo";
 
 import { CallbackModal } from "@/components/callback-modal";
@@ -23,7 +24,13 @@ const NAV = [
   { key: "vidguky", href: "/#reviews" },
 ] as const;
 
-export function Header() {
+export function Header({
+  phones = DEFAULT_PHONES as unknown as PhoneInfo[],
+  logo = "/images/logo.png",
+}: {
+  phones?: PhoneInfo[];
+  logo?: string;
+}) {
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   const pathname = usePathname();
@@ -53,7 +60,7 @@ export function Header() {
               {tCommon("phones")}:
             </span>
             <div className="flex items-center gap-4">
-              {PHONES.map((p) => (
+              {phones.map((p) => (
                 <a
                   key={p.tel}
                   href={`tel:${p.tel}`}
@@ -76,7 +83,7 @@ export function Header() {
         )}
       >
         <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
-          <Logo />
+          <Logo src={logo} />
 
           <nav className="hidden items-center gap-1 xl:flex">
             {NAV.map((item) => {
@@ -111,7 +118,7 @@ export function Header() {
           {/* Mobile controls */}
           <div className="flex items-center gap-2 xl:hidden">
             <a
-              href={`tel:${PHONES[0].tel}`}
+              href={`tel:${phones[0].tel}`}
               className="flex h-10 w-10 items-center justify-center rounded-md bg-navy text-ink"
               aria-label="Зателефонувати"
             >
@@ -146,7 +153,7 @@ export function Header() {
           </nav>
           <div className="container-x flex flex-col gap-3 pb-4">
             <div className="flex flex-wrap gap-x-4 gap-y-1">
-              {PHONES.map((p) => (
+              {phones.map((p) => (
                 <a
                   key={p.tel}
                   href={`tel:${p.tel}`}

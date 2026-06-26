@@ -1,22 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
-import { Car, Award, Building2, Clock, type LucideIcon } from "lucide-react";
+import {
+  Car,
+  Award,
+  Building2,
+  Clock,
+  ShieldCheck,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+import type { StatContent } from "@/lib/content";
 
-type Stat = {
-  value: number;
-  suffix: string;
-  labelKey: "groups" | "years" | "objects" | "react";
-  icon: LucideIcon;
+const ICONS: Record<string, LucideIcon> = {
+  Car,
+  Award,
+  Building2,
+  Clock,
+  ShieldCheck,
+  Users,
 };
-
-const STATS: Stat[] = [
-  { value: 70, suffix: "", labelKey: "groups", icon: Car },
-  { value: 20, suffix: "+", labelKey: "years", icon: Award },
-  { value: 20000, suffix: "+", labelKey: "objects", icon: Building2 },
-  { value: 24, suffix: "/7", labelKey: "react", icon: Clock },
-];
 
 function useCountUp(target: number, active: boolean, duration = 1600) {
   const [value, setValue] = useState(0);
@@ -37,10 +40,9 @@ function useCountUp(target: number, active: boolean, duration = 1600) {
   return value;
 }
 
-function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
-  const t = useTranslations("stats");
+function StatItem({ stat, active }: { stat: StatContent; active: boolean }) {
   const count = useCountUp(stat.value, active);
-  const Icon = stat.icon;
+  const Icon = ICONS[stat.icon] ?? Car;
   return (
     <div className="flex flex-col items-center text-center">
       <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gold/15 text-gold-dark">
@@ -51,13 +53,13 @@ function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
         <span className="text-gold-dark">{stat.suffix}</span>
       </span>
       <span className="mt-2 text-sm font-medium uppercase tracking-wide text-ink/60">
-        {t(stat.labelKey)}
+        {stat.label}
       </span>
     </div>
   );
 }
 
-export function StatsSection() {
+export function StatsSection({ items }: { items: StatContent[] }) {
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -81,8 +83,8 @@ export function StatsSection() {
     <section className="bg-navy-dark py-16">
       <div className="absolute inset-x-0 bg-shield-grid" />
       <div ref={ref} className="container-x grid grid-cols-2 gap-8 lg:grid-cols-4">
-        {STATS.map((stat) => (
-          <StatItem key={stat.labelKey} stat={stat} active={active} />
+        {items.map((stat, i) => (
+          <StatItem key={i} stat={stat} active={active} />
         ))}
       </div>
     </section>

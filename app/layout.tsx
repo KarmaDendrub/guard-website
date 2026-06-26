@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
 
 const sans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,11 +58,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${sans.variable} ${heading.variable} font-sans antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>

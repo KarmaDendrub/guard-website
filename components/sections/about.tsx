@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
 import { MapPin, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { currentLang, getAboutContent } from "@/lib/content";
 
 export async function AboutSection() {
-  const t = await getTranslations("about");
+  const lang = await currentLang();
+  const about = await getAboutContent(lang);
 
   return (
     <section id="about" className="bg-white py-16 sm:py-24">
@@ -13,14 +14,14 @@ export async function AboutSection() {
         <div className="order-2 lg:order-1">
           <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-dark">
             <ShieldCheck className="h-5 w-5" />
-            {t("title")}
+            {about.title}
           </span>
           <div className="mt-3 h-1 w-20 rounded-full bg-gold" />
-          <p className="mt-6 text-lg leading-relaxed text-ink/80">{t("text")}</p>
+          <p className="mt-6 text-lg leading-relaxed text-ink/80">{about.text}</p>
           <Button asChild variant="default" size="lg" className="mt-8">
             <Link href="/mobilni-grupy">
               <MapPin />
-              {t("cta")}
+              {about.cta}
             </Link>
           </Button>
         </div>
@@ -28,7 +29,7 @@ export async function AboutSection() {
         <div className="order-1 lg:order-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-card-hover">
             <Image
-              src="/images/about/main.jpg"
+              src={about.image}
               alt="Мобільні групи Корпорації ГУАРД"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

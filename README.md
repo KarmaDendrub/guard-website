@@ -20,6 +20,44 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Контент через Sanity CMS
+
+Тексти та фото сайту редагуються через вбудовану адмін-панель **Sanity Studio**.
+
+- **Адмінка:** відкрийте `/studio` (локально — http://localhost:3000/studio,
+  на проді — https://<домен>/studio). Увійдіть тим самим обліковим записом Sanity.
+- **Що редагується:** логотип, телефони, соцмережі (Налаштування сайту),
+  головний банер, блок «Про компанію», статистика, послуги (UA/RU), галерея,
+  контакти. UI-рядки (кнопки, меню) лишаються у `messages/*.json` (next-intl).
+- **Як це працює:** компоненти тягнуть контент через GROQ (`sanity/lib`). Якщо
+  Sanity недоступний або поле порожнє — показується вбудований запасний контент,
+  тож сайт ніколи не «ламається».
+- **Зміни** з'являються на сайті протягом ~1 хв (ISR, `revalidate: 60`).
+
+### Налаштування оточення
+
+Скопіюйте `.env.example` → `.env.local` і впишіть токен:
+
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=t1v1zdls
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_TOKEN=<editor-token>   # лише для міграції; не комітити
+```
+
+На Vercel ці ж змінні додайте в **Project → Settings → Environment Variables**.
+Публічні `NEXT_PUBLIC_*` обов'язкові для збірки; `SANITY_API_TOKEN` потрібен лише
+для скрипта міграції.
+
+### Повторний імпорт контенту з коду (одноразово)
+
+```bash
+node --env-file=.env.local scripts/migrate-to-sanity.mjs
+```
+
+Скрипт ідемпотентний: фіксовані `_id` + `createOrReplace`, повторні фото не
+завантажуються.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

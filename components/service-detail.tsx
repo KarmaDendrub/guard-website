@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { SERVICES, ALL_SERVICES } from "@/lib/services";
+import { SERVICES } from "@/lib/services";
 import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
+import { currentLang, getServiceDetailContent } from "@/lib/content";
 
 const BENEFITS = [
   "Цілодобовий контроль та реагування 24/7",
@@ -13,8 +14,9 @@ const BENEFITS = [
   "Індивідуальні умови та гнучкі тарифи для кожного клієнта",
 ];
 
-export function ServiceDetail({ serviceKey }: { serviceKey: string }) {
-  const service = ALL_SERVICES.find((s) => s.key === serviceKey);
+export async function ServiceDetail({ serviceKey }: { serviceKey: string }) {
+  const lang = await currentLang();
+  const service = await getServiceDetailContent(serviceKey, lang);
   if (!service) notFound();
 
   const related = SERVICES.filter((s) => s.key !== serviceKey).slice(0, 4);

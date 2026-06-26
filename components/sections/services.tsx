@@ -1,10 +1,12 @@
 import { getTranslations } from "next-intl/server";
-import { SERVICES } from "@/lib/services";
 import { ServiceCard } from "@/components/service-card";
+import { currentLang, getServicesGridContent } from "@/lib/content";
 
 export async function ServicesSection() {
   const t = await getTranslations("services");
   const tNews = await getTranslations("news");
+  const lang = await currentLang();
+  const services = await getServicesGridContent(lang);
 
   return (
     <section id="services" className="bg-light py-16 sm:py-24">
@@ -16,7 +18,7 @@ export async function ServicesSection() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {SERVICES.map((service) => (
+          {services.map((service) => (
             <ServiceCard key={service.key} service={service} more={tNews("more")} />
           ))}
         </div>

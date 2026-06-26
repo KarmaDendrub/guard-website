@@ -3,12 +3,34 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { MapPin, Phone } from "lucide-react";
-import { COMPANY, PHONES, SOCIALS, NAV_LINKS } from "@/lib/site";
+import {
+  COMPANY,
+  PHONES as DEFAULT_PHONES,
+  SOCIALS as DEFAULT_SOCIALS,
+  NAV_LINKS,
+} from "@/lib/site";
 import { SERVICES } from "@/lib/services";
+import type { Phone as PhoneInfo, Social } from "@/sanity/lib/api";
 import { Logo } from "./logo";
 import { SocialIcon } from "@/components/social-icon";
 
-export function Footer() {
+type FooterLink = { title: string; href: string };
+
+export function Footer({
+  phones = DEFAULT_PHONES as unknown as PhoneInfo[],
+  socials = DEFAULT_SOCIALS as unknown as Social[],
+  services = SERVICES.map((s) => ({ title: s.title, href: s.href })),
+  logo = "/images/logo.png",
+  companyName = COMPANY.name,
+  city = COMPANY.city,
+}: {
+  phones?: PhoneInfo[];
+  socials?: Social[];
+  services?: FooterLink[];
+  logo?: string;
+  companyName?: string;
+  city?: string;
+} = {}) {
   const t = useTranslations("footer");
   const tSocial = useTranslations("social");
   const year = new Date().getFullYear();
@@ -22,7 +44,7 @@ export function Footer() {
             {tSocial("title")}
           </span>
           <div className="flex items-center gap-3">
-            {SOCIALS.map((s) => (
+            {socials.map((s) => (
               <a
                 key={s.name}
                 href={s.href}
@@ -41,7 +63,7 @@ export function Footer() {
       {/* Main footer columns */}
       <div className="container-x grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
-          <Logo />
+          <Logo src={logo} />
           <p className="max-w-xs text-sm leading-relaxed text-ink/60">
             {t("tagline")}
           </p>
@@ -52,8 +74,8 @@ export function Footer() {
             {t("services")}
           </h3>
           <ul className="space-y-2 text-sm">
-            {SERVICES.slice(0, 7).map((s) => (
-              <li key={s.key}>
+            {services.slice(0, 7).map((s, i) => (
+              <li key={i}>
                 <Link href={s.href} className="transition-colors hover:text-gold-dark">
                   {s.title}
                 </Link>
@@ -82,7 +104,7 @@ export function Footer() {
             {t("contacts")}
           </h3>
           <ul className="space-y-2 text-sm">
-            {PHONES.map((p) => (
+            {phones.map((p) => (
               <li key={p.tel}>
                 <a
                   href={`tel:${p.tel}`}
@@ -95,7 +117,7 @@ export function Footer() {
             ))}
             <li className="flex items-start gap-2 pt-2 text-ink/60">
               <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-dark" />
-              {COMPANY.city}
+              {city}
             </li>
           </ul>
         </div>
@@ -105,7 +127,7 @@ export function Footer() {
       <div className="border-t border-black/10">
         <div className="container-x flex flex-col items-center justify-between gap-4 py-5 text-sm text-ink/50 sm:flex-row">
           <p>
-            © {year} {COMPANY.name}. {t("rights")}
+            © {year} {companyName}. {t("rights")}
           </p>
         </div>
       </div>

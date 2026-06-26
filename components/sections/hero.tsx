@@ -10,15 +10,11 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CallbackModal } from "@/components/callback-modal";
+import type { HeroContent } from "@/lib/content";
 
-const SLIDES = [
-  "/images/hero/hero1.jpg",
-  "/images/hero/hero2.jpg",
-  "/images/hero/hero3.jpg",
-];
-
-export function Hero() {
+export function Hero({ content }: { content: HeroContent }) {
   const t = useTranslations("hero");
+  const SLIDES = content.slides;
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000, stopOnInteraction: false }),
   ]);
@@ -77,10 +73,10 @@ export function Hero() {
             24/7 · Дніпро
           </span>
           <h1 className="font-heading text-4xl font-extrabold leading-tight text-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)] sm:text-5xl lg:text-6xl">
-            {t("title")}
+            {content.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-medium text-black/80 sm:text-xl">
-            {t("subtitle")}
+            {content.subtitle}
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <CallbackModal
