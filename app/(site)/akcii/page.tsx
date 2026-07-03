@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Tag, Percent, Gift, Clock } from "lucide-react";
+import { Tag, Percent, Clock } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
 
@@ -14,12 +14,6 @@ const PROMOS = [
     title: "-50% на монтаж сигналізації AJAX",
     text: "Для нових клієнтів — половина вартості монтажу бездротової системи AJAX при укладенні договору на пультову охорону.",
     badge: "Хіт",
-  },
-  {
-    icon: Gift,
-    title: "Перший місяць пультової охорони — безкоштовно",
-    text: "Підключіть свій об'єкт на пульт цілодобового моніторингу та отримайте перший місяць обслуговування у подарунок.",
-    badge: "Новинка",
   },
   {
     icon: Tag,

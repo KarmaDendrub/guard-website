@@ -4,6 +4,7 @@ import { ImageIcon } from "@sanity/icons";
 const CATEGORIES = [
   { title: "Охоронець (персонаж)", value: "guard" },
   { title: "Об'єкти", value: "objects" },
+  { title: "Монтаж", value: "montazh" },
   { title: "Місто Дніпро", value: "city" },
   { title: "Інше", value: "other" },
 ];

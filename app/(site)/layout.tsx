@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FloatingSocials } from "@/components/floating-socials";
 import {
   currentLang,
   getSiteContent,
@@ -20,6 +21,7 @@ export default async function SiteLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Header phones={site.phones} logo={site.logo} />
+      <FloatingSocials socials={site.socials} />
       <main className="flex-1">{children}</main>
       <Footer
         phones={site.phones}

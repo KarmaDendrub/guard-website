@@ -3,6 +3,7 @@ import { type SchemaTypeDefinition } from "sanity";
 // object types
 import { localeString } from "./objects/localeString";
 import { localeText } from "./objects/localeText";
+import { localePortableText } from "./objects/localePortableText";
 import { phone } from "./objects/phone";
 import { social } from "./objects/social";
 
@@ -19,6 +20,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
   localeString,
   localeText,
+  localePortableText,
   phone,
   social,
   // documents

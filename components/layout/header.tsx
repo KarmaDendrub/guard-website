@@ -16,7 +16,6 @@ const NAV = [
   { key: "akcii", href: "/akcii" },
   { key: "golovna", href: "/" },
   { key: "propozicii", href: "/propoziciya" },
-  { key: "pult", href: "/pultova-oxorona" },
   { key: "grupy", href: "/mobilni-grupy" },
   { key: "kontakti", href: "/kontakti" },
   { key: "vakansii", href: "/vakansii" },

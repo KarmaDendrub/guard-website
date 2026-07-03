@@ -23,7 +23,6 @@ export const NAV_LINKS = [
   { label: "Акції", href: "/akcii" },
   { label: "Головна", href: "/" },
   { label: "Послуги", href: "/propoziciya" },
-  { label: "Пультова охорона", href: "/pultova-oxorona" },
   { label: "Мобільні групи", href: "/mobilni-grupy" },
   { label: "Контакти", href: "/kontakti" },
   { label: "Вакансії", href: "/vakansii" },

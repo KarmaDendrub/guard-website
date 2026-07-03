@@ -20,11 +20,13 @@ import {
   getSiteSettings,
   getContact,
   pick,
+  pickBlocks,
   imageUrl,
   type Phone,
   type Social,
 } from "@/sanity/lib/api";
 import type { Lang } from "@/sanity/env";
+import { textToBlocks, type Blocks } from "@/lib/portable";
 
 const messages = { uk, ru } as const;
 
@@ -121,7 +123,7 @@ export type ServiceContent = {
   key: string;
   href: string;
   title: string;
-  description: string;
+  description: Blocks;
   image: string;
   icon: string;
 };
@@ -133,7 +135,7 @@ export async function getServicesGridContent(
     key: s.key,
     href: s.href,
     title: s.title,
-    description: s.description,
+    description: textToBlocks(s.description),
     image: s.image,
     icon: s.icon,
   }));
@@ -143,7 +145,7 @@ export async function getServicesGridContent(
     key: s._id,
     href: `/${s.slug}`,
     title: pick(s.title, lang),
-    description: pick(s.description, lang),
+    description: pickBlocks(s.description, lang),
     image: imageUrl(s.image as never) || "/images/services/pult.jpg",
     icon: s.icon || "MonitorCheck",
   }));
@@ -151,7 +153,7 @@ export async function getServicesGridContent(
 
 export type ServiceDetailContent = {
   title: string;
-  description: string;
+  description: Blocks;
   image: string;
 };
 
@@ -162,15 +164,16 @@ export async function getServiceDetailContent(
 ): Promise<ServiceDetailContent | null> {
   const fb = ALL_SERVICES.find((s) => s.key === serviceKey);
   const fallback: ServiceDetailContent | null = fb
-    ? { title: fb.title, description: fb.description, image: fb.image }
+    ? { title: fb.title, description: textToBlocks(fb.description), image: fb.image }
     : null;
   // Sanity services were migrated with _id `service-${key}` and the same slug.
   const slug = fb ? fb.href.replace(/^\//, "") : serviceKey;
   const data = await getServiceBySlug(slug);
   if (!data) return fallback;
+  const blocks = pickBlocks(data.description, lang);
   return {
     title: pick(data.title, lang) || fallback?.title || "",
-    description: pick(data.description, lang) || fallback?.description || "",
+    description: blocks.length ? blocks : fallback?.description || [],
     image: imageUrl(data.image as never) || fallback?.image || "",
   };
 }

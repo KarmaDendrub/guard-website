@@ -21,6 +21,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { ServiceContent } from "@/lib/content";
+import { blocksToPlainText } from "@/lib/portable";
 
 const ICONS: Record<string, LucideIcon> = {
   MonitorCheck,
@@ -73,8 +74,8 @@ export function ServiceCard({
         <h3 className="font-heading text-base font-bold leading-snug text-ink transition-colors group-hover:text-olive">
           {service.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/60">
-          {service.description}
+        <p className="mt-2 flex-1 text-base leading-relaxed text-[#1a1a1a] line-clamp-4">
+          {blocksToPlainText(service.description)}
         </p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-olive">
           {more}

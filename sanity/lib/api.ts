@@ -17,12 +17,23 @@ import {
 const REVALIDATE = 60;
 
 type LocaleField = { uk?: string | null; ru?: string | null } | null | undefined;
+type Blocks = Array<{ _type: string; [key: string]: unknown }>;
+type LocaleBlockField =
+  | { uk?: Blocks | null; ru?: Blocks | null }
+  | null
+  | undefined;
 type Img = { url?: string | null } | null | undefined;
 
 /** Pick the active-language value from a {uk, ru} field, with sensible fallback. */
 export function pick(field: LocaleField, lang: Lang): string {
   if (!field) return "";
   return field[lang] || field[DEFAULT_LANG] || field.uk || field.ru || "";
+}
+
+/** Pick the active-language Portable Text blocks from a {uk, ru} rich-text field. */
+export function pickBlocks(field: LocaleBlockField, lang: Lang): Blocks {
+  if (!field) return [];
+  return field[lang] || field[DEFAULT_LANG] || field.uk || field.ru || [];
 }
 
 /**
@@ -85,7 +96,7 @@ export type ServiceDoc = {
   icon?: string | null;
   inGrid?: boolean;
   title?: LocaleField;
-  description?: LocaleField;
+  description?: LocaleBlockField;
   image?: Img;
 };
 

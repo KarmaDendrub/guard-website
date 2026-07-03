@@ -17,7 +17,7 @@ export async function AboutSection() {
             {about.title}
           </span>
           <div className="mt-3 h-1 w-20 rounded-full bg-gold" />
-          <p className="mt-6 text-lg leading-relaxed text-ink/80">{about.text}</p>
+          <p className="mt-6 text-xl leading-relaxed text-[#1a1a1a]">{about.text}</p>
           <Button asChild variant="default" size="lg" className="mt-8">
             <Link href="/mobilni-grupy">
               <MapPin />
@@ -35,7 +35,7 @@ export async function AboutSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 ring-1 ring-inset ring-navy-dark/10" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-[#0d1a35]/10" />
           </div>
         </div>
       </div>

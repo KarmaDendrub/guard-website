@@ -25,7 +25,9 @@ export const service = defineType({
     defineField({
       name: "description",
       title: "Опис",
-      type: "localeText",
+      type: "localePortableText",
+      description:
+        "Форматований текст: абзаци, підзаголовки, списки, жирний/курсив.",
     }),
     defineField({
       name: "icon",

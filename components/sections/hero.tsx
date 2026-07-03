@@ -36,7 +36,7 @@ export function Hero({ content }: { content: HeroContent }) {
   }, [emblaApi]);
 
   return (
-    <section className="relative min-h-[600px] w-full overflow-hidden bg-navy-dark lg:min-h-[88vh]">
+    <section className="relative min-h-[600px] w-full overflow-hidden bg-[#0d1a35] lg:min-h-[88vh]">
       {/* Slider background */}
       <div className="absolute inset-0" ref={emblaRef}>
         <div className="flex h-full">
@@ -55,13 +55,13 @@ export function Hero({ content }: { content: HeroContent }) {
         </div>
       </div>
 
-      {/* Overlays — keep the photo visible, darken only where text/controls sit */}
+      {/* Overlays — neutral navy (brand #0d1a35), no green cast; keep the photo visible */}
       {/* light base tint for brand cohesion */}
-      <div className="absolute inset-0 bg-navy-dark/10" />
+      <div className="absolute inset-0 bg-[#0d1a35]/20" />
       {/* darken the left side, under the heading; fades out to the right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/70 via-navy-dark/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a35]/80 via-[#0d1a35]/30 to-transparent" />
       {/* darken the bottom, under the slider controls */}
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/45 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a35]/55 via-transparent to-transparent" />
       {/* subtle shield grid */}
       <div className="absolute inset-0 bg-shield-grid opacity-50" />
 
@@ -72,10 +72,10 @@ export function Hero({ content }: { content: HeroContent }) {
             <span className="h-2 w-2 animate-pulse rounded-full bg-gold" />
             24/7 · Дніпро
           </span>
-          <h1 className="font-heading text-4xl font-extrabold leading-tight text-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)] sm:text-5xl lg:text-6xl">
+          <h1 className="font-heading text-4xl font-extrabold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:text-5xl lg:text-6xl">
             {content.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg font-medium text-black/80 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg font-medium text-white/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)] sm:text-xl">
             {content.subtitle}
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
