@@ -10,6 +10,8 @@ import {
   NAV_LINKS,
 } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
+import { SOCIAL_BRAND } from "@/lib/socials";
+import { cn } from "@/lib/utils";
 import type { Phone as PhoneInfo, Social } from "@/sanity/lib/api";
 import { Logo } from "./logo";
 import { SocialIcon } from "@/components/social-icon";
@@ -51,7 +53,11 @@ export function Footer({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.name}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 text-gold-dark transition-all hover:bg-gold hover:text-ink"
+                title={s.name}
+                className={cn(
+                  "flex h-10 w-10 items-center justify-center rounded-full text-white shadow-sm transition-transform hover:scale-110",
+                  SOCIAL_BRAND[s.icon] ?? "bg-gold"
+                )}
               >
                 <SocialIcon name={s.icon} />
               </a>
@@ -70,7 +76,7 @@ export function Footer({
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-[#1a1a1a]">
             {t("services")}
           </h3>
           <ul className="space-y-2 text-sm">
@@ -85,7 +91,7 @@ export function Footer({
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-[#1a1a1a]">
             {t("company")}
           </h3>
           <ul className="space-y-2 text-sm">
@@ -100,7 +106,7 @@ export function Footer({
         </div>
 
         <div>
-          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
+          <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider text-[#1a1a1a]">
             {t("contacts")}
           </h3>
           <ul className="space-y-2 text-sm">
