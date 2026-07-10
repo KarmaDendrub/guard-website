@@ -205,14 +205,14 @@ export default function VakansiiPage() {
             <h2 className="font-heading text-2xl font-bold text-ink sm:text-3xl">
               Надішліть резюме вже сьогодні
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-ink/70">
+            <p className="mx-auto mt-3 max-w-xl text-base text-ink">
               Наші фахівці зв'яжуться з вами та нададуть детальну інформацію про відкриті
               вакансії, умови праці та можливості професійного розвитку.
             </p>
             <p className="mt-6 font-heading text-sm font-bold uppercase tracking-wider text-gold-dark">
               Відділ кадрів
             </p>
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-ink/90">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-ink">
               <a href="tel:+380567660719" className="flex items-center gap-2 hover:text-gold-dark">
                 <Phone className="h-4 w-4" />
                 +38 (056) 766-07-19
@@ -226,7 +226,7 @@ export default function VakansiiPage() {
                 +38 (063) 347-78-64
               </a>
             </div>
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-ink/90">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-ink">
               <a href="mailto:kadry@guard.ua" className="flex items-center gap-2 hover:text-gold-dark">
                 <Mail className="h-4 w-4" />
                 kadry@guard.ua

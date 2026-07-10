@@ -38,7 +38,7 @@ export function Footer({
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-dark text-ink/80">
+    <footer className="bg-navy-dark text-ink">
       {/* Socials strip */}
       <div className="border-b border-black/10">
         <div className="container-x flex flex-col items-center gap-4 py-6 sm:flex-row sm:justify-between">
@@ -70,7 +70,7 @@ export function Footer({
       <div className="container-x grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
           <Logo src={logo} />
-          <p className="max-w-xs text-sm leading-relaxed text-ink/60">
+          <p className="max-w-xs text-base leading-relaxed text-ink">
             {t("tagline")}
           </p>
         </div>
@@ -121,7 +121,7 @@ export function Footer({
                 </a>
               </li>
             ))}
-            <li className="flex items-start gap-2 pt-2 text-ink/60">
+            <li className="flex items-start gap-2 pt-2 text-ink">
               <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-dark" />
               {city}
             </li>
@@ -131,7 +131,7 @@ export function Footer({
 
       {/* Bottom bar */}
       <div className="border-t border-black/10">
-        <div className="container-x flex flex-col items-center justify-between gap-4 py-5 text-sm text-ink/50 sm:flex-row">
+        <div className="container-x flex flex-col items-center justify-between gap-4 py-5 text-sm text-ink sm:flex-row">
           <p>
             © {year} {companyName}. {t("rights")}
           </p>

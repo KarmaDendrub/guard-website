@@ -22,7 +22,7 @@ export async function PaymentPromoSection() {
               <CreditCard className="h-7 w-7" />
             </span>
             <h3 className="mt-5 font-heading text-2xl font-bold">{t("payTitle")}</h3>
-            <p className="mt-2 max-w-md text-ink/70">{t("payDesc")}</p>
+            <p className="mt-2 max-w-md text-base text-ink">{t("payDesc")}</p>
           </div>
           <span className="relative mt-6 inline-flex items-center gap-2 font-semibold text-gold-dark">
             {t("payBtn")}

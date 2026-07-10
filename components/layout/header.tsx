@@ -51,11 +51,11 @@ export function Header({
   return (
     <header className="sticky top-0 z-50">
       {/* Utility bar: phones + language */}
-      <div className="hidden bg-navy-dark text-ink/90 lg:block">
+      <div className="hidden bg-navy-dark text-ink lg:block">
         <div className="container-x flex h-10 items-center justify-between text-sm">
           <div className="flex items-center gap-1 text-gold-dark">
             <Phone className="h-3.5 w-3.5" />
-            <span className="mr-1 text-xs uppercase tracking-wider text-ink/60">
+            <span className="mr-1 text-sm uppercase tracking-wider text-ink">
               {tCommon("phones")}:
             </span>
             <div className="flex items-center gap-4">
