@@ -31,14 +31,14 @@ export async function ReviewsSection() {
             {t("title")}
           </h2>
           <div className="gold-divider" />
-          <p className="mt-4 text-ink/60">{t("subtitle")}</p>
+          <p className="mt-4 text-base text-ink">{t("subtitle")}</p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {REVIEWS.map((r) => (
             <figure
               key={r.name}
-              className="relative flex flex-col rounded-2xl border border-black/10 bg-black/5 p-7 backdrop-blur"
+              className="relative flex flex-col rounded-2xl border border-black/10 bg-white p-7 shadow-card"
             >
               <Quote className="h-9 w-9 text-gold-dark/40" />
               <div className="mt-3 flex gap-0.5 text-gold-dark">
@@ -46,7 +46,7 @@ export async function ReviewsSection() {
                   <Star key={i} className="h-4 w-4 fill-gold" />
                 ))}
               </div>
-              <blockquote className="mt-4 flex-1 text-ink/80">{r.text}</blockquote>
+              <blockquote className="mt-4 flex-1 text-ink">{r.text}</blockquote>
               <figcaption className="mt-6 border-t border-black/10 pt-4">
                 <p className="font-semibold text-ink">{r.name}</p>
                 <p className="text-sm text-gold-dark">{r.role}</p>
