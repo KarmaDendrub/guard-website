@@ -55,13 +55,10 @@ export function Hero({ content }: { content: HeroContent }) {
         </div>
       </div>
 
-      {/* Overlays — neutral navy (brand #0d1a35), no green cast; keep the photo visible */}
-      {/* light base tint for brand cohesion */}
-      <div className="absolute inset-0 bg-[#0d1a35]/20" />
-      {/* darken the left side, under the heading; fades out to the right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a35]/80 via-[#0d1a35]/30 to-transparent" />
-      {/* darken the bottom, under the slider controls */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a35]/55 via-transparent to-transparent" />
+      {/* Overlays — photos stay clean/uncolored; only a minimal darkening
+          strip behind the heading text for readability (max 15% opacity) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-black/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
       {/* subtle shield grid */}
       <div className="absolute inset-0 bg-shield-grid opacity-50" />
 
