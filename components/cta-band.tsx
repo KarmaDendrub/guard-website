@@ -12,7 +12,7 @@ export function CtaBand() {
             <h2 className="font-heading text-2xl font-bold sm:text-3xl">
               Потрібна надійна охорона?
             </h2>
-            <p className="mt-3 text-ink/70">
+            <p className="mt-3 text-base text-ink">
               Залиште заявку — наш фахівець підбере оптимальне рішення для вашого об'єкта.
             </p>
           </div>
@@ -20,7 +20,7 @@ export function CtaBand() {
             <CallbackModal variant="danger" size="lg" />
             <a
               href={`tel:${PHONES[0].tel}`}
-              className="inline-flex items-center gap-2 text-lg font-semibold text-gold-dark transition-colors hover:text-gold-dark"
+              className="inline-flex items-center gap-2 text-xl font-bold text-ink transition-colors hover:text-gold-dark"
             >
               <Phone className="h-5 w-5" />
               {PHONES[0].display}
