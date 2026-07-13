@@ -9,6 +9,7 @@ export type Post = {
   image: string;
   excerpt: string;
   body: string;
+  gallery?: string[];
 };
 
 export function PostCard({

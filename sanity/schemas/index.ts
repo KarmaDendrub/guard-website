@@ -15,6 +15,8 @@ import { statistic } from "./documents/statistic";
 import { service } from "./documents/service";
 import { photoGallery } from "./documents/photoGallery";
 import { contactInfo } from "./documents/contactInfo";
+import { newsPost } from "./documents/newsPost";
+import { work } from "./documents/work";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // objects
@@ -31,4 +33,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   service,
   photoGallery,
   contactInfo,
+  newsPost,
+  work,
 ];

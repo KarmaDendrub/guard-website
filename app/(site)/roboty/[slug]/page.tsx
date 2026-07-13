@@ -3,28 +3,29 @@ import { notFound } from "next/navigation";
 import installData from "@/data/installations.json";
 import { PostDetail } from "@/components/post-detail";
 import type { Post } from "@/components/post-card";
-
-const posts = installData as Post[];
+import { currentLang, getWorkBySlugContent } from "@/lib/content";
 
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return (installData as Post[]).map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
-  const post = posts.find((p) => p.slug === params.slug);
+}): Promise<Metadata> {
+  const lang = await currentLang();
+  const post = await getWorkBySlugContent(params.slug, lang);
   return { title: post?.title ?? "Монтажні роботи", description: post?.excerpt };
 }
 
-export default function InstallationPostPage({
+export default async function InstallationPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const post = posts.find((p) => p.slug === params.slug);
+  const lang = await currentLang();
+  const post = await getWorkBySlugContent(params.slug, lang);
   if (!post) notFound();
   return <PostDetail post={post} backHref="/#installations" backLabel="Усі роботи" />;
 }

@@ -3,24 +3,29 @@ import { notFound } from "next/navigation";
 import newsData from "@/data/news.json";
 import { PostDetail } from "@/components/post-detail";
 import type { Post } from "@/components/post-card";
-
-const posts = newsData as Post[];
+import { currentLang, getNewsBySlugContent } from "@/lib/content";
 
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return (newsData as Post[]).map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
-  const post = posts.find((p) => p.slug === params.slug);
+}): Promise<Metadata> {
+  const lang = await currentLang();
+  const post = await getNewsBySlugContent(params.slug, lang);
   return { title: post?.title ?? "Новини", description: post?.excerpt };
 }
 
-export default function NewsPostPage({ params }: { params: { slug: string } }) {
-  const post = posts.find((p) => p.slug === params.slug);
+export default async function NewsPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const lang = await currentLang();
+  const post = await getNewsBySlugContent(params.slug, lang);
   if (!post) notFound();
   return <PostDetail post={post} backHref="/#news" backLabel="Усі новини" />;
 }

@@ -36,6 +36,7 @@ _*.log
 
 # source assets / legacy copies (not part of the app)
 /22062026
+/10072026
 /guard-website-main
 
 # typescript

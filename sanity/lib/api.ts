@@ -11,6 +11,10 @@ import {
   serviceBySlugQuery,
   galleryQuery,
   contactQuery,
+  newsListQuery,
+  newsBySlugQuery,
+  worksListQuery,
+  workBySlugQuery,
 } from "./queries";
 
 /** Revalidate cached content this often (seconds). Edits appear within ~1 min. */
@@ -116,6 +120,28 @@ export type Contact = {
   workingHours?: LocaleField;
 } | null;
 
+export type NewsDoc = {
+  _id: string;
+  slug: string;
+  date: string;
+  title?: LocaleField;
+  excerpt?: LocaleField;
+  body?: LocaleBlockField;
+  image?: Img;
+  gallery?: Img[] | null;
+};
+
+export type WorkDoc = {
+  _id: string;
+  slug: string;
+  date?: string | null;
+  title?: LocaleField;
+  excerpt?: LocaleField;
+  body?: LocaleBlockField;
+  image?: Img;
+  gallery?: Img[] | null;
+};
+
 // ---- fetchers ------------------------------------------------------------
 
 export const getSiteSettings = () => fetchSanity<SiteSettings>(siteSettingsQuery);
@@ -128,6 +154,12 @@ export const getServiceBySlug = (slug: string) =>
   fetchSanity<ServiceDoc | null>(serviceBySlugQuery, { slug });
 export const getGallery = () => fetchSanity<GalleryItem[]>(galleryQuery);
 export const getContact = () => fetchSanity<Contact>(contactQuery);
+export const getNewsList = () => fetchSanity<NewsDoc[]>(newsListQuery);
+export const getNewsBySlug = (slug: string) =>
+  fetchSanity<NewsDoc | null>(newsBySlugQuery, { slug });
+export const getWorksList = () => fetchSanity<WorkDoc[]>(worksListQuery);
+export const getWorkBySlug = (slug: string) =>
+  fetchSanity<WorkDoc | null>(workBySlugQuery, { slug });
 
 /** Resolve a Sanity image object to a URL (or null). */
 export function imageUrl(source: { asset?: unknown } | null | undefined) {

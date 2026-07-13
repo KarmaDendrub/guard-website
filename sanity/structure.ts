@@ -22,12 +22,16 @@ export const structure: StructureResolver = (S) =>
       ),
       S.divider(),
       S.documentTypeListItem("service").title("Послуги"),
+      S.documentTypeListItem("work").title("Монтажні роботи"),
+      S.documentTypeListItem("newsPost").title("Новини"),
       S.documentTypeListItem("statistic").title("Статистика"),
       S.documentTypeListItem("photoGallery").title("Галерея фото"),
       // any other (non-singleton) types, just in case
       ...S.documentTypeListItems().filter(
         (item) =>
           !SINGLETON_TYPES.has(item.getId() ?? "") &&
-          !["service", "statistic", "photoGallery"].includes(item.getId() ?? "")
+          !["service", "work", "newsPost", "statistic", "photoGallery"].includes(
+            item.getId() ?? ""
+          )
       ),
     ]);

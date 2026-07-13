@@ -9,6 +9,8 @@
 import { getLocale } from "next-intl/server";
 import uk from "@/messages/uk.json";
 import ru from "@/messages/ru.json";
+import newsData from "@/data/news.json";
+import installData from "@/data/installations.json";
 import { COMPANY, PHONES, SOCIALS } from "@/lib/site";
 import { SERVICES, ALL_SERVICES } from "@/lib/services";
 import {
@@ -19,6 +21,10 @@ import {
   getServiceBySlug,
   getSiteSettings,
   getContact,
+  getNewsList,
+  getNewsBySlug,
+  getWorksList,
+  getWorkBySlug,
   pick,
   pickBlocks,
   imageUrl,
@@ -26,7 +32,8 @@ import {
   type Social,
 } from "@/sanity/lib/api";
 import type { Lang } from "@/sanity/env";
-import { textToBlocks, type Blocks } from "@/lib/portable";
+import { textToBlocks, blocksToPlainText, type Blocks } from "@/lib/portable";
+import type { Post } from "@/components/post-card";
 
 const messages = { uk, ru } as const;
 
@@ -233,5 +240,77 @@ export async function getContactContent(lang: Lang): Promise<ContactContent> {
     email: data.email || fallback.email,
     telegram: data.telegram || fallback.telegram,
     mapUrl: data.mapUrl || fallback.mapUrl,
+  };
+}
+
+// ---- news -------------------------------------------------------------
+
+export async function getNewsListContent(lang: Lang): Promise<Post[]> {
+  const fallback = newsData as Post[];
+  const data = await getNewsList();
+  if (!data || data.length === 0) return fallback;
+  return data.map((n) => ({
+    slug: n.slug,
+    title: pick(n.title, lang),
+    date: n.date,
+    image: imageUrl(n.image as never) || "/images/news/placeholder.jpg",
+    excerpt: pick(n.excerpt, lang),
+    body: blocksToPlainText(pickBlocks(n.body, lang)),
+  }));
+}
+
+export async function getNewsBySlugContent(
+  slug: string,
+  lang: Lang
+): Promise<Post | null> {
+  const fb = (newsData as Post[]).find((p) => p.slug === slug) ?? null;
+  const data = await getNewsBySlug(slug);
+  if (!data) return fb;
+  return {
+    slug: data.slug,
+    title: pick(data.title, lang) || fb?.title || "",
+    date: data.date || fb?.date || "",
+    image: imageUrl(data.image as never) || fb?.image || "",
+    excerpt: pick(data.excerpt, lang) || fb?.excerpt || "",
+    body: blocksToPlainText(pickBlocks(data.body, lang)) || fb?.body || "",
+    gallery: (data.gallery ?? [])
+      .map((g) => imageUrl(g as never))
+      .filter((u): u is string => !!u),
+  };
+}
+
+// ---- works (Монтажні роботи) --------------------------------------------
+
+export async function getWorksListContent(lang: Lang): Promise<Post[]> {
+  const fallback = installData as Post[];
+  const data = await getWorksList();
+  if (!data || data.length === 0) return fallback;
+  return data.map((w) => ({
+    slug: w.slug,
+    title: pick(w.title, lang),
+    date: w.date || "",
+    image: imageUrl(w.image as never) || "/images/installations/placeholder.svg",
+    excerpt: pick(w.excerpt, lang),
+    body: blocksToPlainText(pickBlocks(w.body, lang)),
+  }));
+}
+
+export async function getWorkBySlugContent(
+  slug: string,
+  lang: Lang
+): Promise<Post | null> {
+  const fb = (installData as Post[]).find((p) => p.slug === slug) ?? null;
+  const data = await getWorkBySlug(slug);
+  if (!data) return fb;
+  return {
+    slug: data.slug,
+    title: pick(data.title, lang) || fb?.title || "",
+    date: data.date || fb?.date || "",
+    image: imageUrl(data.image as never) || fb?.image || "",
+    excerpt: pick(data.excerpt, lang) || fb?.excerpt || "",
+    body: blocksToPlainText(pickBlocks(data.body, lang)) || fb?.body || "",
+    gallery: (data.gallery ?? [])
+      .map((g) => imageUrl(g as never))
+      .filter((u): u is string => !!u),
   };
 }

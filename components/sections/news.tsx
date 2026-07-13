@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import newsData from "@/data/news.json";
-import { PostCard, type Post } from "@/components/post-card";
+import { PostCard } from "@/components/post-card";
+import { currentLang, getNewsListContent } from "@/lib/content";
 
 export async function NewsSection() {
   const t = await getTranslations("news");
-  const posts = (newsData as Post[]).slice(0, 3);
+  const lang = await currentLang();
+  const posts = (await getNewsListContent(lang)).slice(0, 3);
 
   return (
     <section id="news" className="bg-white py-16 sm:py-24">

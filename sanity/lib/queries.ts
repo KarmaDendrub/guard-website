@@ -58,3 +58,29 @@ export const contactQuery = groq`*[_type == "contactInfo"][0]{
   email, telegram, mapUrl,
   workingHours ${LOCALE}
 }`;
+
+export const newsListQuery = groq`*[_type == "newsPost"] | order(date desc){
+  _id, "slug": slug.current, date,
+  title ${LOCALE}, excerpt ${LOCALE},
+  "image": image{ ..., "url": asset->url }
+}`;
+
+export const newsBySlugQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]{
+  _id, "slug": slug.current, date,
+  title ${LOCALE}, excerpt ${LOCALE}, body ${LOCALE},
+  "image": image{ ..., "url": asset->url },
+  "gallery": gallery[]{ ..., "url": asset->url }
+}`;
+
+export const worksListQuery = groq`*[_type == "work"] | order(order asc){
+  _id, "slug": slug.current, date,
+  title ${LOCALE}, excerpt ${LOCALE},
+  "image": image{ ..., "url": asset->url }
+}`;
+
+export const workBySlugQuery = groq`*[_type == "work" && slug.current == $slug][0]{
+  _id, "slug": slug.current, date,
+  title ${LOCALE}, excerpt ${LOCALE}, body ${LOCALE},
+  "image": image{ ..., "url": asset->url },
+  "gallery": gallery[]{ ..., "url": asset->url }
+}`;

@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import installData from "@/data/installations.json";
-import { PostCard, type Post } from "@/components/post-card";
+import { PostCard } from "@/components/post-card";
+import { currentLang, getWorksListContent } from "@/lib/content";
 
 export async function InstallationsSection() {
   const t = await getTranslations("install");
-  const posts = (installData as Post[]).slice(0, 2);
+  const lang = await currentLang();
+  const posts = (await getWorksListContent(lang)).slice(0, 2);
 
   return (
     <section id="installations" className="bg-light py-16 sm:py-24">

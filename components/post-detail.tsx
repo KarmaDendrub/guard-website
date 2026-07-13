@@ -40,6 +40,24 @@ export function PostDetail({
             />
           </div>
           <p className="mt-8 text-lg leading-relaxed text-ink/80">{post.body}</p>
+          {post.gallery && post.gallery.length > 0 && (
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {post.gallery.map((src, i) => (
+                <div
+                  key={src + i}
+                  className="relative aspect-square overflow-hidden rounded-xl shadow-card"
+                >
+                  <Image
+                    src={src}
+                    alt={`${post.title} — фото ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
           <Link
             href={backHref}
             className="mt-10 inline-flex items-center gap-2 font-semibold text-gold-dark transition-colors hover:text-ink"
