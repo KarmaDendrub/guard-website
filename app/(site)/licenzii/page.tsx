@@ -2,34 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { Shield } from "lucide-react";
+import { currentLang, getLicensesContent } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Ліцензії та сертифікати",
   description: "Офіційні ліцензії та сертифікати Корпорації «ГУАРД» — Дніпро.",
 };
 
-const LICENSES = [
-  {
-    title: "Офіційний представник ТОВ «Охорона і Безпека»",
-    issued: "ТМ «Орлан», «Лунь», «Алет» та «Granat», м. Дніпро",
-    date: "2026 р.",
-    image: "/images/licenses/license-1.jpg",
-  },
-  {
-    title: "Ajax Authorized Security Company",
-    issued: "Сертифікат Ajax Systems · № UA20262003858",
-    date: "дійсний до 31.12.2026",
-    image: "/images/licenses/license-2.jpg",
-  },
-  {
-    title: "Офіційний дилер ТОВ «Охоронні системи»",
-    issued: "ТМ «GSN Electronic», «Elmes electronic» та «CROW»",
-    date: "дійсний до 31.12.2027",
-    image: "/images/licenses/license-3.jpg",
-  },
-];
-
-export default function LicenziiPage() {
+export default async function LicenziiPage() {
+  const lang = await currentLang();
+  const licenses = await getLicensesContent(lang);
   return (
     <>
       <PageHeader
@@ -56,7 +38,7 @@ export default function LicenziiPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {LICENSES.map((lic) => (
+            {licenses.map((lic) => (
               <div
                 key={lic.title}
                 className="flex flex-col gap-4 rounded-2xl border border-border bg-white p-6 shadow-card transition hover:shadow-card-hover"
@@ -74,8 +56,8 @@ export default function LicenziiPage() {
                   <h3 className="font-heading text-base font-bold text-ink">
                     {lic.title}
                   </h3>
-                  <p className="mt-1 text-sm text-ink/60">{lic.issued}</p>
-                  <p className="mt-1 text-sm font-semibold text-gold-dark">{lic.date}</p>
+                  <p className="mt-1 text-sm text-ink/60">{lic.issuedBy}</p>
+                  <p className="mt-1 text-sm font-semibold text-gold-dark">{lic.validity}</p>
                 </div>
               </div>
             ))}

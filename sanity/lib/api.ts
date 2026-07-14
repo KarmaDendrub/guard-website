@@ -15,6 +15,7 @@ import {
   newsBySlugQuery,
   worksListQuery,
   workBySlugQuery,
+  licensesQuery,
 } from "./queries";
 
 /** Revalidate cached content this often (seconds). Edits appear within ~1 min. */
@@ -142,6 +143,14 @@ export type WorkDoc = {
   gallery?: Img[] | null;
 };
 
+export type LicenseDoc = {
+  _id: string;
+  title?: LocaleField;
+  issuedBy?: LocaleField;
+  validity?: LocaleField;
+  image?: Img;
+};
+
 // ---- fetchers ------------------------------------------------------------
 
 export const getSiteSettings = () => fetchSanity<SiteSettings>(siteSettingsQuery);
@@ -160,6 +169,7 @@ export const getNewsBySlug = (slug: string) =>
 export const getWorksList = () => fetchSanity<WorkDoc[]>(worksListQuery);
 export const getWorkBySlug = (slug: string) =>
   fetchSanity<WorkDoc | null>(workBySlugQuery, { slug });
+export const getLicenses = () => fetchSanity<LicenseDoc[]>(licensesQuery);
 
 /** Resolve a Sanity image object to a URL (or null). */
 export function imageUrl(source: { asset?: unknown } | null | undefined) {

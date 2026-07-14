@@ -24,13 +24,14 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("service").title("Послуги"),
       S.documentTypeListItem("work").title("Монтажні роботи"),
       S.documentTypeListItem("newsPost").title("Новини"),
+      S.documentTypeListItem("license").title("Ліцензії"),
       S.documentTypeListItem("statistic").title("Статистика"),
       S.documentTypeListItem("photoGallery").title("Галерея фото"),
       // any other (non-singleton) types, just in case
       ...S.documentTypeListItems().filter(
         (item) =>
           !SINGLETON_TYPES.has(item.getId() ?? "") &&
-          !["service", "work", "newsPost", "statistic", "photoGallery"].includes(
+          !["service", "work", "newsPost", "license", "statistic", "photoGallery"].includes(
             item.getId() ?? ""
           )
       ),

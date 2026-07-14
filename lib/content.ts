@@ -25,6 +25,7 @@ import {
   getNewsBySlug,
   getWorksList,
   getWorkBySlug,
+  getLicenses,
   pick,
   pickBlocks,
   imageUrl,
@@ -321,4 +322,45 @@ export async function getWorkBySlugContent(
       .map((g) => imageUrl(g as never))
       .filter((u): u is string => !!u),
   };
+}
+
+// ---- licenses (Ліцензії) --------------------------------------------------
+
+export type LicenseContent = {
+  title: string;
+  issuedBy: string;
+  validity: string;
+  image: string;
+};
+
+const LICENSES_FALLBACK: LicenseContent[] = [
+  {
+    title: "Офіційний представник ТОВ «Охорона і Безпека»",
+    issuedBy: "ТМ «Орлан», «Лунь», «Алет» та «Granat», м. Дніпро",
+    validity: "2026 р.",
+    image: "/images/licenses/license-1.jpg",
+  },
+  {
+    title: "Ajax Authorized Security Company",
+    issuedBy: "Сертифікат Ajax Systems · № UA20262003858",
+    validity: "дійсний до 31.12.2026",
+    image: "/images/licenses/license-2.jpg",
+  },
+  {
+    title: "Офіційний дилер ТОВ «Охоронні системи»",
+    issuedBy: "ТМ «GSN Electronic», «Elmes electronic» та «CROW»",
+    validity: "дійсний до 31.12.2027",
+    image: "/images/licenses/license-3.jpg",
+  },
+];
+
+export async function getLicensesContent(lang: Lang): Promise<LicenseContent[]> {
+  const data = await getLicenses();
+  if (!data || data.length === 0) return LICENSES_FALLBACK;
+  return data.map((l) => ({
+    title: pick(l.title, lang),
+    issuedBy: pick(l.issuedBy, lang),
+    validity: pick(l.validity, lang),
+    image: imageUrl(l.image as never) || "",
+  }));
 }

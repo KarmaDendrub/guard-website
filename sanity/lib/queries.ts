@@ -84,3 +84,8 @@ export const workBySlugQuery = groq`*[_type == "work" && slug.current == $slug][
   "image": image{ ..., "url": asset->url },
   "gallery": gallery[]{ ..., "url": asset->url }
 }`;
+
+export const licensesQuery = groq`*[_type == "license"] | order(order asc){
+  _id, title ${LOCALE}, issuedBy ${LOCALE}, validity ${LOCALE},
+  "image": image{ ..., "url": asset->url }
+}`;
