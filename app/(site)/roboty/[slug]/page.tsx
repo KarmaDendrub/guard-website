@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import installData from "@/data/installations.json";
 import { PostDetail } from "@/components/post-detail";
-import type { Post } from "@/components/post-card";
 import { currentLang, getWorkBySlugContent } from "@/lib/content";
 
 export function generateStaticParams() {
-  return (installData as Post[]).map((p) => ({ slug: p.slug }));
+  return installData.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({

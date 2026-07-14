@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import newsData from "@/data/news.json";
 import { PostDetail } from "@/components/post-detail";
-import type { Post } from "@/components/post-card";
 import { currentLang, getNewsBySlugContent } from "@/lib/content";
 
 export function generateStaticParams() {
-  return (newsData as Post[]).map((p) => ({ slug: p.slug }));
+  return newsData.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({

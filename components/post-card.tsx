@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
+import type { Blocks } from "@/lib/portable";
 
 export type Post = {
   slug: string;
@@ -8,7 +9,7 @@ export type Post = {
   date: string;
   image: string;
   excerpt: string;
-  body: string;
+  body: Blocks;
   gallery?: string[];
 };
 

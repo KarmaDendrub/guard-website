@@ -76,6 +76,7 @@
     "language": "Мова"
   },
   "common": {
-    "phones": "Телефони"
+    "phones": "Телефони",
+    "showMore": "Показати ще"
   }
 }

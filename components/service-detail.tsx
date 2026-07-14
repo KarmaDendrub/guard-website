@@ -1,35 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import { PortableText } from "@portabletext/react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/services";
 import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
+import { richTextComponents } from "@/components/portable-text";
 import { currentLang, getServiceDetailContent } from "@/lib/content";
-
-/** Renders editor paragraphs / subheadings / lists as black, larger body text. */
-const ptComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => (
-      <p className="mt-4 text-lg leading-relaxed text-[#1a1a1a] first:mt-0">
-        {children}
-      </p>
-    ),
-    h3: ({ children }) => (
-      <h3 className="mt-6 font-heading text-xl font-bold text-[#1a1a1a] first:mt-0">
-        {children}
-      </h3>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => (
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-lg text-[#1a1a1a]">
-        {children}
-      </ul>
-    ),
-  },
-};
 
 const BENEFITS = [
   "Цілодобовий контроль та реагування 24/7",
@@ -62,7 +40,7 @@ export async function ServiceDetail({ serviceKey }: { serviceKey: string }) {
             />
           </div>
           <div>
-            <PortableText value={service.description} components={ptComponents} />
+            <PortableText value={service.description} components={richTextComponents} />
             <p className="mt-4 text-lg leading-relaxed text-[#1a1a1a]">
               Корпорація «ГУАРД» забезпечує повний цикл послуги «{service.title}» — від
               консультації та проєктування до монтажу, підключення на пульт та

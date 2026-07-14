@@ -32,7 +32,7 @@ import {
   type Social,
 } from "@/sanity/lib/api";
 import type { Lang } from "@/sanity/env";
-import { textToBlocks, blocksToPlainText, type Blocks } from "@/lib/portable";
+import { textToBlocks, type Blocks } from "@/lib/portable";
 import type { Post } from "@/components/post-card";
 
 const messages = { uk, ru } as const;
@@ -245,8 +245,14 @@ export async function getContactContent(lang: Lang): Promise<ContactContent> {
 
 // ---- news -------------------------------------------------------------
 
+type RawPost = Omit<Post, "body"> & { body: string };
+
+function fallbackPost(p: RawPost): Post {
+  return { ...p, body: textToBlocks(p.body) };
+}
+
 export async function getNewsListContent(lang: Lang): Promise<Post[]> {
-  const fallback = newsData as Post[];
+  const fallback = (newsData as RawPost[]).map(fallbackPost);
   const data = await getNewsList();
   if (!data || data.length === 0) return fallback;
   return data.map((n) => ({
@@ -255,7 +261,7 @@ export async function getNewsListContent(lang: Lang): Promise<Post[]> {
     date: n.date,
     image: imageUrl(n.image as never) || "/images/news/placeholder.jpg",
     excerpt: pick(n.excerpt, lang),
-    body: blocksToPlainText(pickBlocks(n.body, lang)),
+    body: pickBlocks(n.body, lang),
   }));
 }
 
@@ -263,16 +269,17 @@ export async function getNewsBySlugContent(
   slug: string,
   lang: Lang
 ): Promise<Post | null> {
-  const fb = (newsData as Post[]).find((p) => p.slug === slug) ?? null;
+  const fb = (newsData as RawPost[]).map(fallbackPost).find((p) => p.slug === slug) ?? null;
   const data = await getNewsBySlug(slug);
   if (!data) return fb;
+  const body = pickBlocks(data.body, lang);
   return {
     slug: data.slug,
     title: pick(data.title, lang) || fb?.title || "",
     date: data.date || fb?.date || "",
     image: imageUrl(data.image as never) || fb?.image || "",
     excerpt: pick(data.excerpt, lang) || fb?.excerpt || "",
-    body: blocksToPlainText(pickBlocks(data.body, lang)) || fb?.body || "",
+    body: body.length ? body : fb?.body || [],
     gallery: (data.gallery ?? [])
       .map((g) => imageUrl(g as never))
       .filter((u): u is string => !!u),
@@ -282,7 +289,7 @@ export async function getNewsBySlugContent(
 // ---- works (Монтажні роботи) --------------------------------------------
 
 export async function getWorksListContent(lang: Lang): Promise<Post[]> {
-  const fallback = installData as Post[];
+  const fallback = (installData as RawPost[]).map(fallbackPost);
   const data = await getWorksList();
   if (!data || data.length === 0) return fallback;
   return data.map((w) => ({
@@ -291,7 +298,7 @@ export async function getWorksListContent(lang: Lang): Promise<Post[]> {
     date: w.date || "",
     image: imageUrl(w.image as never) || "/images/installations/placeholder.svg",
     excerpt: pick(w.excerpt, lang),
-    body: blocksToPlainText(pickBlocks(w.body, lang)),
+    body: pickBlocks(w.body, lang),
   }));
 }
 
@@ -299,16 +306,17 @@ export async function getWorkBySlugContent(
   slug: string,
   lang: Lang
 ): Promise<Post | null> {
-  const fb = (installData as Post[]).find((p) => p.slug === slug) ?? null;
+  const fb = (installData as RawPost[]).map(fallbackPost).find((p) => p.slug === slug) ?? null;
   const data = await getWorkBySlug(slug);
   if (!data) return fb;
+  const body = pickBlocks(data.body, lang);
   return {
     slug: data.slug,
     title: pick(data.title, lang) || fb?.title || "",
     date: data.date || fb?.date || "",
     image: imageUrl(data.image as never) || fb?.image || "",
     excerpt: pick(data.excerpt, lang) || fb?.excerpt || "",
-    body: blocksToPlainText(pickBlocks(data.body, lang)) || fb?.body || "",
+    body: body.length ? body : fb?.body || [],
     gallery: (data.gallery ?? [])
       .map((g) => imageUrl(g as never))
       .filter((u): u is string => !!u),

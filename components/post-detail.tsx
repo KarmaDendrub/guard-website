@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PortableText } from "@portabletext/react";
 import { ArrowLeft, CalendarDays } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { CtaBand } from "@/components/cta-band";
+import { richTextComponents } from "@/components/portable-text";
 import type { Post } from "@/components/post-card";
 
 export function PostDetail({
@@ -39,7 +41,9 @@ export function PostDetail({
               className="object-cover"
             />
           </div>
-          <p className="mt-8 text-lg leading-relaxed text-ink/80">{post.body}</p>
+          <div className="mt-8">
+            <PortableText value={post.body} components={richTextComponents} />
+          </div>
           {post.gallery && post.gallery.length > 0 && (
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
               {post.gallery.map((src, i) => (
